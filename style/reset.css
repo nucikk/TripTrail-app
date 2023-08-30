@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+  }
+html {
+  scroll-behavior: smooth;
+}
+html,body,div,span,h1,h2,h3,
+h4,p,a,img,strong,b,u,i,ol,ul,li,article {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+article,footer,header,menu,nav,section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+select, option,input, textarea {
+  border:0px;
+  outline: none;
+}
+button {
+  color: #FFF;
+  border: none;
+}
