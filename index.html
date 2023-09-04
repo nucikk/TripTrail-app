@@ -3,16 +3,60 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- PT Mono -->
+    <!-- Font Styles: PT Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Asul&family=Manrope:wght@500&family=Montserrat:wght@100;200;300;500&family=PT+Mono&family=Roboto:wght@100;400;500&family=Ubuntu&family=Urbanist:wght@100&display=swap"
-      rel="stylesheet" />
-    <title>Travel Agency</title>
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./style/reset.css" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <script defer src="./functional.js"></script>
+    <title>Travel Blog</title>
   </head>
   <body>
-    <!-- Start Header Section -->
-     <header></header>
+    <!-- ^ ---------- Header Section -->
+    <header class="header_trip">
+      <div class="navbar">
+        <div>
+          <img src="./image/logo-trip.svg" alt="Logo Icon" />
+          <h2 id="logo_name">TripTrail</h2>
+        </div>
+        <!--^ ---------- Navigation Bar -->
+        <nav class="nav_item">
+          <ul class="nav_list active">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Tips</a></li>
+            <li><a href="#">Community</a></li>
+          </ul>
+        </nav>
+        <div>
+          <button class="register_btn">Sign up</button>
+          <button class="register_btn">Login</button>
+
+          <div>
+            <img
+              id="burgerIcon"
+              class="menu_icon burger"
+              src="./image/burger-icon.png"
+              alt="burger-icon"
+            />
+            <img
+              id="closeIcon"
+              class="menu_icon close"
+              src="./image/close-icon.png"
+              alt="close-icon"
+            />
+          </div>
+        </div>
+      </div>
+    </header>
   </body>
 </html>
+
+
+

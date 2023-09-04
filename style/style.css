@@ -1,9 +1,189 @@
+/*^ css - variables */
 :root {
-    --color-bg: #0A1117; 
-    --color-dark-gunmetal: #182632;
-    --color-purple-light: #E2C1F9;
-    --color-yellow: #FFC803;
-    --color-white: #FFF;
-    --color-platinum: #E5E5E5;
-    --color-weldon-blue: #8395A7;
+  --color-bg: #0a11172d;
+  --color-dark-gunmetal: #182632;
+  --color-gunmetal: #243241;
+  --color-purple-light: #E2C1F9;
+  --color-yellow: #FFC803;
+  --color-white: #FFF;
+  --color-platinum: #E5E5E5;
+  --color-blue-hover: #5021ff;
+  --font-family-mono: 'PT Mono', monospace;
+  --animation-duration: 0.5s;
 }
+
+* {
+  color: var(--color-white);
+  font-family: var(--font-family-mono);
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  font-weight: 700;
+  background-image: linear-gradient(0deg, #3a3b45 0%, #304658 50%, #0a1117 100%);
+}
+
+/** -----------  Header Section */
+.navbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 4.375rem;
+  background-color: var(--color-dark-gunmetal);
+  border-bottom: 0.0625rem solid var(--color-gunmetal);
+  transform: translateY(-100%);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  padding: 0 1.875rem;
+}
+
+#logo_name {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 0.1875rem;
+  display: inline-block;
+  padding: 0.3125rem;
+  color: var(--color-platinum);
+}
+
+.nav_item {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.nav_list {
+  list-style: none;
+  display: flex;
+  gap: 1.25rem;
+}
+
+.nav_list a {
+  text-decoration: none;
+  color: var(--color-white);
+  padding-bottom: 0.625rem;
+  border-bottom: 0.125rem solid transparent;
+  transition: color 0.3s ease, border-bottom 0.4s ease-in-out;
+}
+
+.nav_list a:hover {
+  color: var(--color-blue-hover);
+  border-bottom-color: var(--color-blue-hover);
+}
+
+.register_btn {
+  padding: 0.6875rem 1.25rem;
+  border-radius: 0.75rem;
+  background-color: var(--color-gunmetal);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.register_btn:hover {
+  background-color: var(--color-blue-hover);
+  transform: scale(1.05);
+}
+
+.menu_icon {
+  display: none;
+  height: 1.875rem;
+}
+
+.nav_item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+/** -----------  Media query 820px screens  */
+@media only screen and (max-width: 51.25rem) {
+  .register_btn, .menu_icon.close {
+    display: none;
+  }
+
+  .menu_icon.burger {
+    display: inline-block;
+  }
+
+  .navbar {
+    padding: 0 1.25rem;
+    justify-content: space-evenly;
+  }
+
+  .nav_list {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--color-dark-gunmetal);
+    border: 0.0625rem solid var(--color-gunmetal);
+    width: 100%;
+  }
+
+  .nav_list.active {
+    display: flex;
+  }
+
+  .nav_list a {
+    display: block;
+    text-decoration: none;
+    color: var(--color-white);
+    padding-bottom: 0.625rem;
+    margin: 0rem 1.25rem 0.3125rem;
+    border-bottom: 0.125rem solid transparent;
+    transition: color 0.3s ease, border-bottom 0.4s ease-in-out;
+  }
+
+  .nav_list a:hover {
+    color: var(--color-blue-hover);
+    border-bottom-color: var(--color-blue-hover);
+  }
+}
+
+.navbar {
+  transition: transform 0.5s ease-in-out;
+  transform: translateY(0);
+}
+/** ----------- animation: menu for sliding up */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+.nav_list.active {
+  animation: slideDown var(--animation-duration) ease-in-out;
+}
+
+.nav_list:not(.active) {
+  max-height: 0;
+  animation: slideUp var(--animation-duration) ease-in-out;
+  overflow: hidden;
+}
+
+.register-link {
+  display: none;
+}
+
+
