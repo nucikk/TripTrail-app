@@ -3,12 +3,12 @@
   --color-bg: #0a11172d;
   --color-dark-gunmetal: #182632;
   --color-gunmetal: #243241;
-  --color-purple-light: #E2C1F9;
-  --color-yellow: #FFC803;
-  --color-white: #FFF;
-  --color-platinum: #E5E5E5;
+  --color-purple-light: #e2c1f9;
+  --color-yellow: #ffc803;
+  --color-white: #fff;
+  --color-platinum: #e5e5e5;
   --color-blue-hover: #5021ff;
-  --font-family-mono: 'PT Mono', monospace;
+  --font-family-mono: "PT Mono", monospace;
   --animation-duration: 0.5s;
 }
 
@@ -21,7 +21,12 @@ body {
   min-height: 100vh;
   background-color: var(--color-bg);
   font-weight: 700;
-  background-image: linear-gradient(0deg, #3a3b45 0%, #304658 50%, #0a1117 100%);
+  background-image: linear-gradient(
+    0deg,
+    #3a3b45 0%,
+    #304658 50%,
+    #0a1117 100%
+  );
 }
 
 /* Header Styles */
@@ -46,7 +51,7 @@ header {
 }
 
 #logo_name {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   letter-spacing: 0.1875rem;
   display: inline-block;
   padding: 0.3125rem;
@@ -103,57 +108,6 @@ header {
   flex-grow: 1;
 }
 
-/* Media Query 820px */
-@media only screen and (max-width: 51.25rem) {
-  .register_btn, .menu_icon.close {
-    display: none;
-  }
-
-  .menu_icon.burger {
-    display: inline-block;
-  }
-
-  .navbar {
-    padding: 0 1.25rem;
-    justify-content: space-evenly;
-  }
-
-  .nav_list {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background-color: var(--color-dark-gunmetal);
-    border: 0.0625rem solid var(--color-gunmetal);
-    width: 100%;
-  }
-
-  .nav_list.active {
-    display: flex;
-  }
-
-  .nav_list a {
-    display: block;
-    text-decoration: none;
-    color: var(--color-white);
-    padding-bottom: 0.625rem;
-    margin: 0rem 1.25rem 0.3125rem;
-    border-bottom: 0.125rem solid transparent;
-    transition: color 0.3s ease, border-bottom 0.4s ease-in-out;
-  }
-
-  .nav_list a:hover {
-    color: var(--color-blue-hover);
-    border-bottom-color: var(--color-blue-hover);
-  }
-}
-
-.navbar {
-  transition: transform 0.5s ease-in-out;
-  transform: translateY(0);
-}
-
 /*Menu Animation */
 @keyframes slideDown {
   from {
@@ -195,7 +149,7 @@ header {
 }
 
 #registration_container {
-  height: 900px;
+  min-height: 852px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -205,11 +159,11 @@ header {
 }
 
 .greetings_card {
-  width: 400px;
-  height: 300px;
+  width: clamp(200px, 100%, 400px);
+  min-height: 300px;
   display: grid;
   align-content: space-evenly;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   box-shadow: 10px 14px 18px 2px rgba(4, 64, 148, 0.487);
 }
 
@@ -218,9 +172,11 @@ header {
   vertical-align: middle;
 }
 
-.cancel, .sign_text, .signMessage {
+.cancel,
+.sign_text,
+.signMessage {
   font-size: 20px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .sign_text {
@@ -232,13 +188,15 @@ header {
 
 @keyframes signText {
   0% {
-    color: #BC7AF9;
+    color: #bc7af9;
   }
+
   50% {
-    color: #F8FF95;
+    color: #f8ff95;
   }
+
   100% {
-    color: #A6FF96;
+    color: #a6ff96;
   }
 }
 
@@ -248,7 +206,7 @@ header {
 }
 
 .register_card {
-  width: 600px;
+  width: clamp(200px, 100%, 600px);
   box-shadow: 20px 14px 228px 100px rgba(4, 64, 148, 0.487);
 }
 
@@ -280,7 +238,7 @@ label {
 }
 
 .form_group label {
-  color: var(--color-purple-light)
+  color: var(--color-purple-light);
 }
 
 input[type="text"],
@@ -288,18 +246,134 @@ input[type="email"],
 input[type="password"],
 input[type="tel"] {
   width: 100%;
+  height: 60px;
   border-radius: 5px;
-  padding: 21px 136px 23px 28px;
   border: 2px solid #038abff0;
   background-color: #0f202f40;
   box-shadow: 1px 10px 18px 12px #01369988;
+  padding: 0 20px;
 }
 
 input[type="checkbox"] {
   margin-right: 5px;
 }
 
+.form_group input:hover {
+  border: 2px solid var(--color-yellow);
+  box-shadow: 0px 1px 5px 0px var(--color-yellow);
+}
+
+.form_group input:focus {
+  border: 2px solid var(--color-purple-light);
+  box-shadow: 0px 1px 5px 0px var(--color-purple-light);
+}
+
 .login {
-  width: 150px;
+  width: clamp(50px, 100%, 150px);
   height: 50px;
+  display: block;
+}
+
+@media only screen and (max-width: 1300px) {
+  #registration_container {
+    flex-wrap: wrap;
+    padding: 17px 30px;
+    gap: 10%;
+  }
+
+  .sign_text {
+    font-size: 25px;
+  }
+
+  .greetings_card {
+    width: clamp(200px, 100%, 592px);
+    min-height: 150px;
+    box-shadow: none;
+  }
+
+  .signMessage {
+    font-size: 16px;
+  }
+}
+
+/* Media Query 820px */
+@media only screen and (max-width: 51.25rem) {
+  .register_btn,
+  .menu_icon.close {
+    display: none;
+  }
+
+  .menu_icon.burger {
+    display: inline-block;
+  }
+
+  .navbar {
+    padding: 0 1.25rem;
+    justify-content: space-evenly;
+  }
+
+  .nav_list {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--color-dark-gunmetal);
+    border: 0.0625rem solid var(--color-gunmetal);
+    width: 100%;
+  }
+
+  .nav_list.active {
+    display: flex;
+  }
+
+  .nav_list a {
+    display: block;
+    text-decoration: none;
+    color: var(--color-white);
+    padding-bottom: 0.625rem;
+    margin: 0rem 1.25rem 0.3125rem;
+    border-bottom: 0.125rem solid transparent;
+    transition: color 0.3s ease, border-bottom 0.4s ease-in-out;
+  }
+
+  .nav_list a:hover {
+    color: var(--color-blue-hover);
+    border-bottom-color: var(--color-blue-hover);
+  }
+
+  /* Registracion Page */
+  .name-input {
+    margin-bottom: 0px;
+  }
+}
+
+.navbar {
+  transition: transform 0.5s ease-in-out;
+  transform: translateY(0);
+}
+
+@media only screen and (max-width: 360px) {
+  #registration_container {
+    padding: 11px;
+  }
+
+  .sign_text {
+    font-size: 13px;
+    line-height: 40px;
+  }
+
+  .signMessage,
+  .cancel {
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  .register_nameItem h3 {
+    font-size: 16px;
+  }
+
+  .logo_header {
+    display: none;
+  }
 }
