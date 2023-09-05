@@ -28,5 +28,6 @@ select, option,input, textarea {
 }
 button {
   color: #FFF;
-  border: none;
+  outline: none;
+  border:0px;
 }

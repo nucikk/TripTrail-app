@@ -23,15 +23,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const navList = document.querySelector(".nav_list")
 
   //* Function to create list items
-  const createListItem = (text) => {
+  const createListItem = (text, link) => {
     const listItem = document.createElement("li");
-    listItem.innerHTML = `<a href="#">${text}</a>`
+    const anchor = document.createElement("a");
+    anchor.setAttribute("href", link); 
+    anchor.textContent = text; 
+    listItem.appendChild(anchor); 
     return listItem;
   };
 
   //* create "Sign Up" and "Login" list items
-  const signUpListItem = createListItem("Sign Up");
-  const loginListItem = createListItem("Login");
+  const signUpListItem = createListItem("Sign Up", "./page/registracion.html");
+  const loginListItem = createListItem("Login", "./page/registracion.html");
 
   //* function to toggle the menu
   const toggleMenu = () => {
