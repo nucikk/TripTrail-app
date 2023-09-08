@@ -81,10 +81,14 @@
               <input type="email" id="email" name="email" class="email-input" placeholder="Enter your email address" />
               <div id="emailError" class="input_error"></div>
             </div>
-            =
+            
             <div class="form_group">
               <label for="password">Password</label>
-              <input type="password" id="password" name="password" class="password-input" />
+              <div class="password_input_container">
+                <input type="password" id="password" name="password" class="password-input" placeholder="Enter your password"/>
+                <img id="togglePassword" class="password_toggle_icon" src="../image/hide.png" alt="Hide Password" onclick="passToggleVisibility()">
+              </div>
+              <div id="passwordError" class="input_error"></div>
             </div>
 
             <div class="form_group">
