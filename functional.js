@@ -84,27 +84,47 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-
-//*--------Input Validation
+//*--------------- რეგისტრაცის გვერიდის ინპუტების ვალიდაცია
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('#registrationForm');
   const fullNameInput = document.querySelector('#fullName');
+  const emailInput = document.querySelector('#email');
   const fullNameError = document.querySelector('#fullNameError');
+  const emailError = document.querySelector('#emailError');
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
+    // ცარიელი ინპუტების არ მიღება
+    const fullName = fullNameInput.value.trim();
+    const email = emailInput.value.trim();
 
-    const fullName = fullNameInput.value.trim(); //სრული სახელის ამოღება და ცარიელი სფეისების არ მიღება
-
-    //შეამოწმებს სახელი არის თუ არა (!fullName) ან გამოიტანს შესაბამის ერორ მესიჯს
+    // Validate Full Name (შეამოწმებს სახელი არის თუ არა (!fullName) ან გამოიტანს შესაბამის ერორ მესიჯს)
     if (!fullName) {
-      fullNameError.textContent = 'First name is required';
-      fullNameError.style.display = 'block';
+      showError(fullNameError, 'Full Name is required');
     } else {
-      fullNameError.textContent = '';
-      fullNameError.style.display = 'none';
+      hideError(fullNameError);
+    }
 
-      console.log(`Full Name: ${fullName}`); 
+    // Validate Email Format (შეამოწმებს ემაილ ინპუტს აი დაიბეჭდოს ცარიელი ან არასწორი ფორმაატის მქონე ემაილი)
+    const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+    if (!email) {
+      showError(emailError, 'Email is required');
+    } else if (!emailPattern.test(email)) {
+      showError(emailError, 'Invalid email format');
+    } else {
+      hideError(emailError);
     }
   });
+
+  // Function to display error message
+  function showError(element, message) {
+    element.textContent = message;
+    element.style.display = 'block';
+  }
+
+  // Function to hide error message
+  function hideError(element) {
+    element.textContent = '';
+    element.style.display = 'none';
+  }
 });

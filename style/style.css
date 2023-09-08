@@ -235,7 +235,8 @@ header {
 
 label {
   display: block;
-  margin: 22px 10px;
+ /*  margin: 22px 10px; */
+ margin: 13px 8px;
 }
 
 .form_group label {
@@ -253,6 +254,7 @@ input[type="tel"] {
   background-color: #0f202f40;
   box-shadow: 1px 10px 18px 12px #01369988;
   padding: 0 20px;
+  margin-bottom: 16px;
 }
 
 input[type="checkbox"] {
@@ -380,8 +382,8 @@ input[type="checkbox"] {
 }
 
 
-.name_input_error{
+.input_error{
   color: var(--color-error-red);
   font-size: 14px;
-  display: none; /* Initially hide error messages */
+  display: none; 
 }
