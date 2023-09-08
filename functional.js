@@ -83,3 +83,28 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+
+
+//*--------Input Validation
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.querySelector('#registrationForm');
+  const fullNameInput = document.querySelector('#fullName');
+  const fullNameError = document.querySelector('#fullNameError');
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const fullName = fullNameInput.value.trim(); //სრული სახელის ამოღება და ცარიელი სფეისების არ მიღება
+
+    //შეამოწმებს სახელი არის თუ არა (!fullName) ან გამოიტანს შესაბამის ერორ მესიჯს
+    if (!fullName) {
+      fullNameError.textContent = 'First name is required';
+      fullNameError.style.display = 'block';
+    } else {
+      fullNameError.textContent = '';
+      fullNameError.style.display = 'none';
+
+      console.log(`Full Name: ${fullName}`); 
+    }
+  });
+});

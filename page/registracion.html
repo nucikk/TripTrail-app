@@ -1,109 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font Styles: PT Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Asul&family=Manrope:wght@500&family=Montserrat:wght@100;200;300;500&family=PT+Mono&family=Roboto:wght@100;400;500&family=Ubuntu&family=Urbanist:wght@100&display=swap"
+      rel="stylesheet"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Font Styles: PT Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Asul&family=Manrope:wght@500&family=Montserrat:wght@100;200;300;500&family=PT+Mono&family=Roboto:wght@100;400;500&family=Ubuntu&family=Urbanist:wght@100&display=swap"
-    rel="stylesheet" />
+    <link rel="stylesheet" href="../style/reset.css" />
+    <link rel="stylesheet" href="../style/style.css" />
+    <script defer src="../functional.js"></script>
+    <title>Travel Blog</title>
+  </head>
 
-  <link rel="stylesheet" href="../style/reset.css" />
-  <link rel="stylesheet" href="../style/style.css" />
-  <script defer src="../functional.js"></script>
-  <title>Travel Blog</title>
-</head>
-
-<body>
-  <!-- ^ ---------- Header Section -->
-  <header class="header_trip">
-    <div class="navbar">
-      <div>
-        <img class="logo_header" src="../image/logo-trip.svg" alt="Logo Icon" />
-        <h2 id="logo_name">TripTrail</h2>
-      </div>
-      <!--^ ---------- Navigation Bar -->
-      <nav class="nav_item">
-        <ul class="nav_list active">
-          <li><a href="../index.html">Home</a></li>
-        </ul>
-      </nav>
-      <div>
-        <button class="register_btn">
-          <a href="../page/registracion.html">Sign up</a>
-        </button>
-        <button class="register_btn">
-          <a href="../page/registracion.html">Login</a>
-        </button>
-
+  <body>
+    <!-- ^ ---------- Header Section -->
+    <header class="header_trip">
+      <div class="navbar">
         <div>
-          <img id="burgerIcon" class="menu_icon burger" src="../image/burger-icon.png" alt="burger-icon" />
-          <img id="closeIcon" class="menu_icon close" src="../image/close-icon.png" alt="close-icon" />
+          <img
+            class="logo_header"
+            src="../image/logo-trip.svg"
+            alt="Logo Icon"
+          />
+          <h2 id="logo_name">TripTrail</h2>
+        </div>
+        <!--^ ---------- Navigation Bar -->
+        <nav class="nav_item">
+          <ul class="nav_list active">
+            <li><a href="../index.html">Home</a></li>
+          </ul>
+        </nav>
+        <div>
+          <button class="register_btn">
+            <a href="../page/registracion.html">Sign up</a>
+          </button>
+          <button class="register_btn">
+            <a href="../page/registracion.html">Login</a>
+          </button>
+
+          <div>
+            <img
+              id="burgerIcon"
+              class="menu_icon burger"
+              src="../image/burger-icon.png"
+              alt="burger-icon"
+            />
+            <img
+              id="closeIcon"
+              class="menu_icon close"
+              src="../image/close-icon.png"
+              alt="close-icon"
+            />
+          </div>
         </div>
       </div>
-    </div>
-  </header>
-  <!--^ ---------- Registration Section -->
-  <main>
-    <section>
-      <div id="registration_container">
-        <!-- Greetings Card -->
-        <div class="greetings_card">
-          <a href="../index.html">
-            <img class="backIcon" src="../image/left-arrow_5720446.png" alt="back icon" />
-            <span class="cancel">Back</span>
-          </a>
+    </header>
+    <!--^ ---------- Registration Section -->
+    <main>
+      <section>
+        <div id="registration_container">
+          <!-- Greetings Card -->
+          <div class="greetings_card">
+            <a href="../index.html">
+              <img
+                class="backIcon"
+                src="../image/left-arrow_5720446.png"
+                alt="back icon"
+              />
+              <span class="cancel">Back</span>
+            </a>
 
-          <p class="sign_text">Sign In or Join TripTrail</p>
-          <p class="signMessage">
-            Please enter your email address to sign in or register to become a
-            TripTrail member.
-          </p>
-        </div>
-
-        <!--^ ---------- User Form -->
-        <div class="register_card">
-          <div class="register_nameItem">
-            <h3>Login</h3>
-            <h3>Sign up</h3>
+            <p class="sign_text">Sign In or Join TripTrail</p>
+            <p class="signMessage">
+              Please enter your email address to sign in or register to become a
+              TripTrail member.
+            </p>
           </div>
 
-          <form class="user_form" action="registration_process.php" method="POST">
-            <div class="form_group">
-              <label for="name">Full Name </label>
-              <input type="text" id="Full Name" name="Full Name" class="name-input" required />
+          <!--^ ---------- User Form -->
+          <div class="register_card">
+            <div class="register_nameItem">
+              <h3>Login</h3>
+              <h3>Sign up</h3>
             </div>
 
-            <div class="form_group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" class="email-input" required />
-            </div>
+            <form class="user_form" id="registrationForm">
+              <div class="form_group">
+                <label for="name">Full Name </label>
+                <input
+                  type="text"
+                  id="fullName"
+                  name="fullName"
+                  class="name-input"
+                  placeholder="Enter Full Name"
+                />
+                <div id="fullNameError" class="name_input_error" ></div>
+              </div>
+              <div class="form_group">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="email-input"
+                  
+                />
+              </div>
 
-            <div class="form_group">
-              <label for="password">Password</label>
-              <input type="password" id="password" name="password" class="password-input" required />
-            </div>
+              <div class="form_group">
+                <label for="password">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  class="password-input"
+                  
+                />
+              </div>
 
-            <div class="form_group">
-              <label for="phone">Phone</label>
-              <input type="tel" id="phone" name="phone" class="phone-input" />
-            </div>
+              <div class="form_group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" class="phone-input" />
+              </div>
 
-            <div class="form_group">
-              <input type="checkbox" id="subscribe" name="subscribe" class="subscribe-checkbox" />
-              <span>Subscribe to news</span>    
+              <div class="form_group">
+                <input
+                  type="checkbox"
+                  id="subscribe"
+                  name="subscribe"
+                  class="subscribe-checkbox"
+                />
+                <span>Subscribe to news</span>
+              </div>
 
-            </div>
-                      <button class="register_btn login" style="display: block;" type="submit">Register</button>
-
-          </form>
+              <button
+                class="register_btn login"
+                style="display: block"
+                type="submit"
+              >
+                Register
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
-    </section>
-  </main>
-</body>
-
+      </section>
+    </main>
+  </body>
 </html>

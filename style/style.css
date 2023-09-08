@@ -8,6 +8,7 @@
   --color-white: #fff;
   --color-platinum: #e5e5e5;
   --color-blue-hover: #5021ff;
+  --color-error-red: #E84142;
   --font-family-mono: "PT Mono", monospace;
   --animation-duration: 0.5s;
 }
@@ -376,4 +377,11 @@ input[type="checkbox"] {
   .logo_header {
     display: none;
   }
+}
+
+
+.name_input_error{
+  color: var(--color-error-red);
+  font-size: 14px;
+  display: none; /* Initially hide error messages */
 }
