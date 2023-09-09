@@ -84,66 +84,16 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// //*--------------- რეგისტრაცის გვერიდის ინპუტების ვალიდაცია
-// document.addEventListener('DOMContentLoaded', () => {
-//   const form = document.querySelector('#registrationForm');
-//   const fullNameInput = document.querySelector('#fullName');
-//   const emailInput = document.querySelector('#email');
-//   const fullNameError = document.querySelector('#fullNameError');
-//   const emailError = document.querySelector('#emailError');
-//   const passwordError = document.querySelector('#passwordError');
+// phone validation
+function formatAndSetPhone(inputElement, phoneValue) {
+  const formattedPhone = formatPhone(phoneValue);
 
+  if (formattedPhone !== phoneValue) {
+    inputElement.value = formattedPhone;
+  }
+}
 
-//   form.addEventListener('submit', (event) => {
-//     event.preventDefault();
-//     // ცარიელი ინპუტების არ მიღება
-//     const fullName = fullNameInput.value.trim();
-//     const email = emailInput.value.trim();
-
-//     // Validate Full Name (შეამოწმებს სახელი არის თუ არა (!fullName) ან გამოიტანს შესაბამის ერორ მესიჯს)
-//     if (!fullName) {
-//       showError(fullNameError, 'Full Name is required');
-//     } else {
-//       hideError(fullNameError);
-//     }
-
-//     // Validate Email Format (შეამოწმებს ემაილ ინპუტს აი დაიბეჭდოს ცარიელი ან არასწორი ფორმაატის მქონე ემაილი)
-//     const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-//     if (!email) {
-//       showError(emailError, 'Email is required');
-//     } else if (!emailPattern.test(email)) {
-//       showError(emailError, 'Invalid email format');
-//     } else {
-//       hideError(emailError);
-//     }
-
-//     const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[._/])[A-Za-z\d._/]{7,}$/;
-//     if (!password) {
-//       showError(passwordError, 'Password is required');
-//     } else if (password.length < 7) {
-//       showError(passwordError, 'Password should be at least 7 characters');
-//     } else if (!passwordPattern.test(password)) {
-//       showError(passwordError, 'Password requires uppercase, lowercase, numbers, and characters.');
-//     } else {
-//       hideError(passwordError);
-//     }
-
-//   });
-
-
-
-//   // Function to display error message
-//   function showError(element, message) {
-//     element.textContent = message;
-//     element.style.display = 'block';
-//   }
-
-//   // Function to hide error message
-//   function hideError(element) {
-//     element.textContent = '';
-//     element.style.display = 'none';
-//   }
-// });
+let countryCodeAdded = false;
 
 //*--------------- რეგისტრაცის გვერიდის ინპუტების ვალიდაცია
 document.addEventListener('DOMContentLoaded', () => {
@@ -154,7 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const fullNameError = document.querySelector('#fullNameError');
   const emailError = document.querySelector('#emailError');
   const passwordError = document.querySelector('#passwordError');
-
+  const phoneInput = document.querySelector('#phone');
+  const phoneError = document.querySelector('#phoneError');
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -162,6 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const fullName = fullNameInput.value.trim();
     const email = emailInput.value.trim();
     const password = passwordInput.value;
+    const phoneValue = phoneInput.value.trim();
+
 
     //* validate Full Name (შეამოწმებს სახელი არის თუ არა (!fullName) ან გამოიტანს შესაბამის ერორ მესიჯს)
     if (!fullName) {
@@ -185,6 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const pasLowerCase = /[a-z]/.test(password);
     const pasNumber = /[0-9]/.test(password);
     const pasSymbol = /[._*@^,&-]/.test(password);
+    const phonePattern = /^(\+?995\s?|0)\d{9}$/;
 
     //* თუ რომელიმე პირობა იქნება true ამ შემთხევაში არ გამოიტანს კონკრეტულად იმ ერორს რომელიც ჭეშმარიტია და დაბეჭდავს მხოლოდ falseს
     if (!password) {
@@ -201,6 +155,27 @@ document.addEventListener('DOMContentLoaded', () => {
       // hide/display error messages if the condition is true or false
       errorMessage = errorMessage.slice(0, -1);
       showError(passwordError, errorMessage);
+    }
+
+     // validate phone number
+     if (!phoneValue) {
+      showError(phoneError, 'Phone number is required');
+    } else if (!phonePattern.test(phoneValue)) {
+      showError(phoneError, 'Invalid phone number format');
+    } else {
+      hideError(phoneError);
+    }
+    formatAndSetPhone(phoneInput, phoneValue);
+  });
+
+  // როდესაც იუზერი ჩაწერს ერთ ციფრს მაინც გამოჩნდება ქართული ნომრის კოდი
+  phoneInput.addEventListener('input', (event) => {
+    if (!countryCodeAdded) {
+      const inputValue = event.target.value.trim();
+      if (inputValue && !inputValue.startsWith('+995')) {
+        event.target.value = '+995 ' + inputValue;
+        countryCodeAdded = true;
+      }
     }
 
   });
@@ -231,3 +206,4 @@ const passToggleVisibility = () => {
     togglePasswordIcon.src = '../image/hide.png';
   }
 };
+

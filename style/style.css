@@ -301,6 +301,10 @@ input[type="checkbox"] {
   z-index: 1;
 }
 
+.inputFocus {
+  border: 5px solid #A6FF96;
+}
+
 
 @media only screen and (max-width: 1300px) {
   #registration_container {
