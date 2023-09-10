@@ -73,30 +73,30 @@
           <form class="user_form" id="registrationForm">
             <div class="form_group">
               <label for="name">Full Name</label>
-              <input type="text" id="fullName" name="fullName" class="name-input inputFocus" placeholder="Enter Full Name" />
+              <input type="text" id="fullName" name="fullName" class="name-input" placeholder="Enter Full Name" />
               <div id="fullNameError" class="input_error"></div>
             </div>
             <div class="form_group">
               <label for="email">Email</label>
-              <input type="email" id="email" name="email" class="email-input inputFocus" placeholder="Enter your email address" />
+              <input type="email" id="email" name="email" class="email-input" placeholder="Enter your email address" />
               <div id="emailError" class="input_error"></div>
             </div>
-            
+          
             <div class="form_group">
               <label for="password">Password</label>
               <div class="password_input_container">
-                <input type="password" id="password" name="password" class="password-input inputFocus" placeholder="Enter your password"/>
+                <input type="password" id="password" name="password" class="password-input" placeholder="Enter your password"/>
                 <img id="togglePassword" class="password_toggle_icon" src="../image/hide.png" alt="Hide Password" onclick="passToggleVisibility()">
               </div>
               <div id="passwordError" class="input_error"></div>
             </div>
-
+          
             <div class="form_group">
               <label for="phone">Phone</label>
-              <input type="tel" id="phone" name="phone" class="phone-input inputFocus" placeholder="Enter your phone number" />
+              <input type="tel" id="phone" name="phone" class="phone-input" placeholder="Enter your phone number [995XXXXXXXXX]" />
               <div id="phoneError" class="input_error"></div>
             </div>
-
+          
             <div class="form_group">
               <input type="checkbox" id="subscribe" name="subscribe" class="subscribe-checkbox" />
               <span>Subscribe to news</span>
@@ -104,6 +104,15 @@
             <button class="register_btn login" style="display: block" type="submit">
               Register
             </button>
+
+            <div id="successContainer" class="success-container">
+              <div class="success-content">
+                <h2>Congratulations!</h2>
+                <p>You have successfully registered.</p>
+                <button id="continueButton">Continue</button>
+              </div>
+            </div>
+
           </form>
         </div>
       </div>

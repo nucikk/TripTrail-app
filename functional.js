@@ -84,17 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// phone validation
-function formatAndSetPhone(inputElement, phoneValue) {
-  const formattedPhone = formatPhone(phoneValue);
-
-  if (formattedPhone !== phoneValue) {
-    inputElement.value = formattedPhone;
-  }
-}
-
-let countryCodeAdded = false;
-
 //*--------------- რეგისტრაცის გვერიდის ინპუტების ვალიდაცია
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('#registrationForm');
@@ -106,17 +95,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const passwordError = document.querySelector('#passwordError');
   const phoneInput = document.querySelector('#phone');
   const phoneError = document.querySelector('#phoneError');
+  const successContainer = document.querySelector('#successContainer');
+  const continueButton = document.querySelector('#continueButton');
+  let isFormSubmitted = false;
+  const phonePattern = /^(\+?995\s?|0)\d{9}$/;
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
-    // ცარიელი ინპუტების არ მიღება
+
     const fullName = fullNameInput.value.trim();
     const email = emailInput.value.trim();
     const password = passwordInput.value;
     const phoneValue = phoneInput.value.trim();
 
-
-    //* validate Full Name (შეამოწმებს სახელი არის თუ არა (!fullName) ან გამოიტანს შესაბამის ერორ მესიჯს)
+    //* validate Full Name (შეამოწმებს სახელი არის თუ არა (!fullName) ან გამოიტანს შესაბამის ერორ მესიჯს)  
     if (!fullName) {
       showError(fullNameError, 'Full Name is required');
     } else {
@@ -124,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     //* validate Email Format (შეამოწმებს ემაილ ინპუტს აი დაიბეჭდოს ცარიელი ან არასწორი ფორმაატის მქონე ემაილი)
+
     const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
     if (!email) {
       showError(emailError, 'Email is required');
@@ -136,61 +129,78 @@ document.addEventListener('DOMContentLoaded', () => {
     //* validate Password (შეამწმებს რომ არ გაიგზავნოს ცარიელი ინპუტი, ასევე ერორ მესიჯები იმის მიხედვით თუ რომელ პირობას არ აკმაყოფილებს ინპუთი)
     const pasUpperCase = /[A-Z]/.test(password);
     const pasLowerCase = /[a-z]/.test(password);
-    const pasNumber = /[0-9]/.test(password);
-    const pasSymbol = /[._*@^,&-]/.test(password);
+    const passNumber = /[0-9]/.test(password);
+    const passSymbol = /[._*@^,&-]/.test(password);
     const phonePattern = /^(\+?995\s?|0)\d{9}$/;
 
     //* თუ რომელიმე პირობა იქნება true ამ შემთხევაში არ გამოიტანს კონკრეტულად იმ ერორს რომელიც ჭეშმარიტია და დაბეჭდავს მხოლოდ falseს
+    const unmetConditions = [];
+    if (!pasUpperCase) unmetConditions.push('at least 1 uppercase letter');
+    if (!pasLowerCase) unmetConditions.push('at least 1 lowercase letter');
+    if (!passNumber) unmetConditions.push('at least 1 number');
+    if (!passSymbol) unmetConditions.push('at least 1 symbol (._*@-)');
+        
     if (!password) {
       showError(passwordError, 'Password is required');
-    } else if (pasUpperCase && pasLowerCase && pasNumber && pasSymbol) {
+    } else if (unmetConditions.length === 0) {
       hideError(passwordError);
     } else {
-      let errorMessage = 'Password must include:';
-      if (!pasUpperCase) errorMessage += 'at least 1 uppercase letter,';
-      if (!pasLowerCase) errorMessage += '1 lowercase letter,';
-      if (!pasNumber) errorMessage += '1 number,';
-      if (!pasSymbol) errorMessage += '1 symbol (._*@-),';
-
-      // hide/display error messages if the condition is true or false
-      errorMessage = errorMessage.slice(0, -1);
+      const errorMessage = 'Password must include ' + unmetConditions.join(', ');
       showError(passwordError, errorMessage);
     }
 
-     // validate phone number
-     if (!phoneValue) {
+    // validate phone number
+    if (!phoneValue) {
       showError(phoneError, 'Phone number is required');
     } else if (!phonePattern.test(phoneValue)) {
-      showError(phoneError, 'Invalid phone number format');
+      showError(phoneError, 'Georgian number format (9 digits)');
     } else {
       hideError(phoneError);
     }
     formatAndSetPhone(phoneInput, phoneValue);
-  });
-
-  // როდესაც იუზერი ჩაწერს ერთ ციფრს მაინც გამოჩნდება ქართული ნომრის კოდი
-  phoneInput.addEventListener('input', (event) => {
-    if (!countryCodeAdded) {
-      const inputValue = event.target.value.trim();
-      if (inputValue && !inputValue.startsWith('+995')) {
-        event.target.value = '+995 ' + inputValue;
-        countryCodeAdded = true;
+    //* შეამოწმებს თუ ყველა ინპუტი იქნება ჭეშმარიტი გამოიტანს SuccessMessage-ს
+    if (!fullNameError.textContent && !emailError.textContent && !passwordError.textContent && !phoneError.textContent) {
+      if (!isFormSubmitted) {
+        isFormSubmitted = true;
+        showSuccessMessage();
       }
     }
+  });
+  //* როდესაც იუზერი ჩაწერს ერთ ციფრს მაინც გამოჩნდება ქართული ნომრის კოდი
+  phoneInput.addEventListener('input', (event) => {
+    const inputValue = event.target.value.trim();
 
+    if (!inputValue || !/^\d+$/.test(inputValue)) {
+      ing
+      event.target.value = '';
+    } else if (inputValue.length === 1) {
+      event.target.value = '995 ' + inputValue;
+    }
   });
 
-  // Function to display error message
+  //* Function to show the success message
+  function showSuccessMessage() {
+    successContainer.style.display = 'block';
+  }
+  //* add event listener to the "Continue" button
+  continueButton.addEventListener('click', () => {
+    console.log('Continue button clicked');
+  });
+
   function showError(element, message) {
     element.textContent = message;
-    element.style.display = 'block';
+    element.style.display = 'block'; 
   }
-
-  // Function to hide error message
+  
   function hideError(element) {
     element.textContent = '';
-    element.style.display = 'none';
+    element.style.display = 'none'; 
   }
+
+  function formatAndSetPhone(inputElement, phoneValue) {
+    inputElement.value = phoneValue;
+  }
+
 });
 
 // Password icon visibility toggle
@@ -206,4 +216,3 @@ const passToggleVisibility = () => {
     togglePasswordIcon.src = '../image/hide.png';
   }
 };
-

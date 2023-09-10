@@ -22,12 +22,10 @@ body {
   min-height: 100vh;
   background-color: var(--color-bg);
   font-weight: 700;
-  background-image: linear-gradient(
-    0deg,
-    #3a3b45 0%,
-    #304658 50%,
-    #0a1117 100%
-  );
+  background-image: linear-gradient(0deg,
+      #3a3b45 0%,
+      #304658 50%,
+      #0a1117 100%);
 }
 
 /* Header Styles */
@@ -235,8 +233,7 @@ header {
 
 label {
   display: block;
- /*  margin: 22px 10px; */
- margin: 13px 8px;
+  margin: 13px 8px;
 }
 
 .form_group label {
@@ -277,10 +274,10 @@ input[type="checkbox"] {
   display: block;
 }
 
-.input_error{
+.input_error {
   color: var(--color-error-red);
   font-size: 14px;
-  display: none; 
+  display: none;
 }
 
 .password_input_container {
@@ -288,7 +285,7 @@ input[type="checkbox"] {
 }
 
 .password_input {
-  padding-right: 30px; 
+  padding-right: 30px;
 }
 
 .password_toggle_icon {
@@ -301,10 +298,68 @@ input[type="checkbox"] {
   z-index: 1;
 }
 
-.inputFocus {
+.valid-input {
+  border-color: #A6FF96;
+  /* Change this to your desired focus color */
   border: 5px solid #A6FF96;
 }
 
+.success-container { 
+  width: clamp(150px, 90%, 400px);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 50px 20px;
+  text-align: center;
+  animation: slide-in 0.5s ease-in-out;  
+  border-radius: 20px;
+  background-color: var(--color-gunmetal);
+  box-shadow: 2px 14px 300px #038abff0; 
+  display: none;
+  z-index: 20;
+}
+
+.success-content h2 {
+  font-family: Arial, Helvetica, sans-serif;  
+  letter-spacing: 4px;
+  color: #16FF00;
+}
+
+.success-content p {  
+  color: #FFED00;
+  font-size: 18px;
+  line-height: 50px;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+#continueButton {
+  border: none;
+  min-width: 120px; 
+  width: clamp(120px, 100%, 300px);
+  height: 50px;
+  cursor: pointer;
+  margin-top: 20px;
+  border-radius: 4px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: var(--color-blue-hover);
+}
+#continueButton:hover {
+  background-color: #5121ff8d;
+}
+
+/* Media Query 1300px */
 
 @media only screen and (max-width: 1300px) {
   #registration_container {
@@ -330,6 +385,7 @@ input[type="checkbox"] {
 
 /* Media Query 820px */
 @media only screen and (max-width: 51.25rem) {
+
   .register_btn,
   .menu_icon.close {
     display: none;
@@ -378,6 +434,13 @@ input[type="checkbox"] {
   .name-input {
     margin-bottom: 0px;
   }
+
+  .success-content p, .success-content h2 {  
+    font-size: 12px;
+    line-height: 40px;
+    letter-spacing:2px;
+  }
+
 }
 
 .navbar {
@@ -408,8 +471,10 @@ input[type="checkbox"] {
   .logo_header {
     display: none;
   }
-  .input_error {
-    font-size:12px;
-  }
-}
 
+  .input_error {
+    font-size: 12px;
+  }
+
+  
+}
