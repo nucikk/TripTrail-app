@@ -100,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let isFormSubmitted = false;
   const phonePattern = /^(\+?995\s?|0)\d{9}$/;
 
+
   form.addEventListener('submit', (event) => {
     event.preventDefault();
 
@@ -109,11 +110,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const phoneValue = phoneInput.value.trim();
 
     //* validate Full Name (შეამოწმებს სახელი არის თუ არა (!fullName) ან გამოიტანს შესაბამის ერორ მესიჯს)  
-    if (!fullName) {
+   if (!fullName) {
       showError(fullNameError, 'Full Name is required');
     } else {
       hideError(fullNameError);
     }
+
+
 
     //* validate Email Format (შეამოწმებს ემაილ ინპუტს აი დაიბეჭდოს ცარიელი ან არასწორი ფორმაატის მქონე ემაილი)
 
@@ -136,9 +139,9 @@ document.addEventListener('DOMContentLoaded', () => {
     //* თუ რომელიმე პირობა იქნება true ამ შემთხევაში არ გამოიტანს კონკრეტულად იმ ერორს რომელიც ჭეშმარიტია და დაბეჭდავს მხოლოდ falseს
     const unmetConditions = [];
     if (!pasUpperCase) unmetConditions.push('at least 1 uppercase letter');
-    if (!pasLowerCase) unmetConditions.push('at least 1 lowercase letter');
-    if (!passNumber) unmetConditions.push('at least 1 number');
-    if (!passSymbol) unmetConditions.push('at least 1 symbol (._*@-)');
+    if (!pasLowerCase) unmetConditions.push('1 lowercase letter');
+    if (!passNumber) unmetConditions.push('1 number');
+    if (!passSymbol) unmetConditions.push('1 symbol (._*@-)');
         
     if (!password) {
       showError(passwordError, 'Password is required');
@@ -178,13 +181,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  //* Function to show the success message
+   //* Function to show the success message
   function showSuccessMessage() {
     successContainer.style.display = 'block';
+
   }
   //* add event listener to the "Continue" button
-  continueButton.addEventListener('click', () => {
-    console.log('Continue button clicked');
+  continueButton.addEventListener('click', (event) => {
+    event.preventDefault(); 
+  
+    const fullName = fullNameInput.value;
+    localStorage.setItem('fullName', fullName);
+  
+    const usernameSpan = document.querySelector('#username');
+    if (usernameSpan) {
+      usernameSpan.textContent = fullName;
+    }
+
+    setTimeout(() => {
+      console.log('Continue button clicked');
+      window.location.href = './account.html';
+    }, 100); 
   });
 
   function showError(element, message) {
@@ -203,6 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+
 // Password icon visibility toggle
 const passToggleVisibility = () => {
   const passwordInput = document.querySelector('#password');
@@ -216,3 +234,15 @@ const passToggleVisibility = () => {
     togglePasswordIcon.src = '../image/hide.png';
   }
 };
+
+
+//* banner video event
+const video = document.getElementById('bannerVideo');
+
+video.addEventListener('contextmenu', (event) => {
+  event.preventDefault();
+});
+
+video.addEventListener('ended', () => {
+  video.play();
+});

@@ -298,12 +298,6 @@ input[type="checkbox"] {
   z-index: 1;
 }
 
-.valid-input {
-  border-color: #A6FF96;
-  /* Change this to your desired focus color */
-  border: 5px solid #A6FF96;
-}
-
 .success-container { 
   width: clamp(150px, 90%, 400px);
   position: fixed;
@@ -355,12 +349,46 @@ input[type="checkbox"] {
   color: #fff;
   background-color: var(--color-blue-hover);
 }
+
 #continueButton:hover {
   background-color: #5121ff8d;
 }
 
-/* Media Query 1300px */
 
+.account_navIcon {
+  width: 30px;  
+}
+.user {
+    margin-right: 100px;
+}
+
+.navbar_icon {
+  display: flex;
+   gap: 10px;
+}
+
+
+#customVideo::-webkit-media-controls,
+#customVideo::-webkit-media-controls-enclosure,
+#customVideo::-webkit-media-controls-panel,
+#customVideo::media-controls-panel {
+  display: none !important;
+}
+
+/* Disable context menu to prevent zooming */
+#customVideo {
+  pointer-events: none;
+}
+
+#customVideo {
+    width: 565px;
+    pointer-events: none;
+    border-radius: 34px 632px 139px 688px;
+    margin: -92px 260px;
+    transform: rotate(260deg);
+}
+
+/**--------------------------- Media Query 1300px */
 @media only screen and (max-width: 1300px) {
   #registration_container {
     flex-wrap: wrap;
@@ -441,12 +469,17 @@ input[type="checkbox"] {
     letter-spacing:2px;
   }
 
+  
+
 }
 
 .navbar {
   transition: transform 0.5s ease-in-out;
   transform: translateY(0);
 }
+
+
+
 
 @media only screen and (max-width: 360px) {
   #registration_container {
@@ -478,3 +511,4 @@ input[type="checkbox"] {
 
   
 }
+

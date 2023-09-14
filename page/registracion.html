@@ -30,15 +30,17 @@
         <ul class="nav_list active">
           <li><a href="../index.html">Home</a></li>
         </ul>
-      </nav>
+      </nav>        
       <div>
-        <button class="register_btn">
-          <a href="../page/registracion.html">Sign up</a>
-        </button>
-        <button class="register_btn">
-          <a href="../page/registracion.html">Login</a>
-        </button>
 
+        <div id="registrationButtons" class="registration-buttons" style="display: none;">
+          <button class="register_btn">
+            <a href="../page/registration.html">Sign up</a>
+          </button>
+          <button class="register_btn">
+            <a href="../page/registration.html">Login</a>
+          </button>
+        </div>
         <div>
           <img id="burgerIcon" class="menu_icon burger" src="../image/burger-icon.png" alt="burger-icon" />
           <img id="closeIcon" class="menu_icon close" src="../image/close-icon.png" alt="close-icon" />
@@ -108,7 +110,7 @@
             <div id="successContainer" class="success-container">
               <div class="success-content">
                 <h2>Congratulations!</h2>
-                <p>You have successfully registered.</p>
+                <p>You have successfully registered</p>
                 <button id="continueButton">Continue</button>
               </div>
             </div>

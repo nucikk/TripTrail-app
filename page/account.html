@@ -11,9 +11,9 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="./style/reset.css" />
-    <link rel="stylesheet" href="./style/style.css" />
-    <script defer src="./functional.js"></script>
+    <link rel="stylesheet" href="../style/reset.css" />
+    <link rel="stylesheet" href="../style/style.css" />
+    <script defer src="../functional.js"></script>
     <title>Travel Blog</title>
   </head>
   <body>
@@ -21,42 +21,49 @@
     <header class="header_trip">
       <div class="navbar">
         <div>
-          <img src="./image/logo-trip.svg" alt="Logo Icon" />
+          <img src="../image/logo-trip.svg" alt="Logo Icon" />
           <h2 id="logo_name">TripTrail</h2>
         </div>
         <!--^ ---------- Navigation Bar -->
         <nav class="nav_item">
           <ul class="nav_list active">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
             <li><a href="#">Tips</a></li>
             <li><a href="#">Community</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
           </ul>
         </nav>
-        <div>
-          <button class="register_btn"><a href="./page/registracion.html">Sign up</a></button>
-          <button class="register_btn"><a href="./page/registracion.html">Login</a></button>
-
-          <div>
+   
+          <div class="navbar_icon">
             <img
               id="burgerIcon"
               class="menu_icon burger"
-              src="./image/burger-icon.png"
+              src="../image/burger-icon.png"
               alt="burger-icon"
             />
+
             <img
               id="closeIcon"
               class="menu_icon close"
-              src="./image/close-icon.png"
+              src="../image/close-icon.png"
               alt="close-icon"
             />
+            <div class="user">
+              <img
+                class="account_navIcon"
+                src="../image/post.png"
+                alt="Post icon"
+              />
+              <img
+                class="account_navIcon user"
+                src="../image/user.png"
+                alt="User Icon"
+              />
+              <span id="username"></span>
+            </div>
           </div>
-        </div>
+        
       </div>
     </header>
   </body>
 </html>
-
-
-
