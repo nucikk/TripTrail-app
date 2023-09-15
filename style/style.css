@@ -82,7 +82,7 @@ header {
   border-bottom-color: var(--color-blue-hover);
 }
 
-.register_btn {
+.register_btn, .more_btn {
   padding: 0.6875rem 1.25rem;
   border-radius: 0.75rem;
   background-color: var(--color-gunmetal);
@@ -90,7 +90,7 @@ header {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.register_btn:hover {
+.register_btn:hover ,.more_btn:hover{
   background-color: var(--color-blue-hover);
   transform: scale(1.05);
 }
@@ -162,7 +162,6 @@ header {
   min-height: 300px;
   display: grid;
   align-content: space-evenly;
-  font-family: "Montserrat", sans-serif;
   box-shadow: 10px 14px 18px 2px rgba(4, 64, 148, 0.487);
 }
 
@@ -184,6 +183,7 @@ header {
   color: var(--color-blue-hover);
   animation: signText 5s linear infinite;
 }
+
 
 @keyframes signText {
   0% {
@@ -298,7 +298,7 @@ input[type="checkbox"] {
   z-index: 1;
 }
 
-.success-container { 
+.success-container {
   width: clamp(150px, 90%, 400px);
   position: fixed;
   top: 50%;
@@ -306,21 +306,21 @@ input[type="checkbox"] {
   transform: translate(-50%, -50%);
   padding: 50px 20px;
   text-align: center;
-  animation: slide-in 0.5s ease-in-out;  
+  animation: slide-in 0.5s ease-in-out;
   border-radius: 20px;
   background-color: var(--color-gunmetal);
-  box-shadow: 2px 14px 300px #038abff0; 
+  box-shadow: 2px 14px 300px #038abff0;
   display: none;
   z-index: 20;
 }
 
 .success-content h2 {
-  font-family: Arial, Helvetica, sans-serif;  
+  font-family: Arial, Helvetica, sans-serif;
   letter-spacing: 4px;
   color: #16FF00;
 }
 
-.success-content p {  
+.success-content p {
   color: #FFED00;
   font-size: 18px;
   line-height: 50px;
@@ -338,7 +338,7 @@ input[type="checkbox"] {
 
 #continueButton {
   border: none;
-  min-width: 120px; 
+  min-width: 120px;
   width: clamp(120px, 100%, 300px);
   height: 50px;
   cursor: pointer;
@@ -356,17 +356,24 @@ input[type="checkbox"] {
 
 
 .account_navIcon {
-  width: 30px;  
+  width: 30px;
 }
+
 .user {
-    margin-right: 100px;
+  margin-right: 100px;
 }
 
 .navbar_icon {
   display: flex;
-   gap: 10px;
+  gap: 10px;
 }
-
+/**------------------------------ Banner Section */ 
+.banner_section {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row-reverse;
+}
 
 #customVideo::-webkit-media-controls,
 #customVideo::-webkit-media-controls-enclosure,
@@ -381,11 +388,59 @@ input[type="checkbox"] {
 }
 
 #customVideo {
-    width: 565px;
-    pointer-events: none;
-    border-radius: 34px 632px 139px 688px;
-    margin: -92px 260px;
-    transform: rotate(260deg);
+  width: clamp(150px, 100%, 513px);
+  pointer-events: none;
+  border-radius: 34px 632px 139px 688px;
+  margin-top: -92px;
+  transform: rotate(260deg);
+}
+
+.banner_content {
+  width: clamp(100px, 100%, 635px);
+  height: 600px;
+  text-align: center;
+}
+
+
+.greetings_card,
+.FtMono {
+  font-family: "Montserrat", sans-serif;
+}
+
+
+.welcome {
+  font-size: 50px;
+  word-spacing: 5px;
+  letter-spacing: 5px;
+  background-image: linear-gradient(to right, #fbff00, #ff9100);
+  -webkit-background-clip: text; /* For Safari/Chrome */
+  background-clip: text;
+  color: transparent;
+}
+.share {
+  line-height: 70px;
+}
+.about_text {
+  line-height: 30px;
+  margin: 35px;
+  padding-bottom: 15px;
+  text-align: start;
+  border-bottom: 2px solid  rgb(194, 253, 194) ;
+}
+
+.more_btn {
+width: 350px;
+height: 50px;
+font-size: 17px;
+}
+
+.arrow {
+  width: 40px;
+}
+.arrow_container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
 }
 
 /**--------------------------- Media Query 1300px */
@@ -401,7 +456,7 @@ input[type="checkbox"] {
   }
 
   .greetings_card {
-    width: clamp(200px, 100%, 592px);
+    width: clamp(500px, 100%, 592px);
     min-height: 150px;
     box-shadow: none;
   }
@@ -409,7 +464,12 @@ input[type="checkbox"] {
   .signMessage {
     font-size: 16px;
   }
+
+  .banner_section {
+    flex-direction: column;
+  }
 }
+
 
 /* Media Query 820px */
 @media only screen and (max-width: 51.25rem) {
@@ -463,13 +523,14 @@ input[type="checkbox"] {
     margin-bottom: 0px;
   }
 
-  .success-content p, .success-content h2 {  
+  .success-content p,
+  .success-content h2 {
     font-size: 12px;
     line-height: 40px;
-    letter-spacing:2px;
+    letter-spacing: 2px;
   }
 
-  
+
 
 }
 
@@ -509,6 +570,5 @@ input[type="checkbox"] {
     font-size: 12px;
   }
 
-  
-}
 
+}
