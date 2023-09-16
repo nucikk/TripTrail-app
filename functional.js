@@ -236,13 +236,39 @@ const passToggleVisibility = () => {
 };
 
 
-//* banner video event
-const video = document.getElementById('bannerVideo');
+//* ფუნქცია : აიქონზე დაჭერისას შემდეგ სექციაზე უნდა გადავიდეს ნელი ანიმაციით
+function scrollToSection(sectionOffset, duration = 1000) {
+  const startY = window.pageYOffset; //ვერტიკალური სქროლი
+  const scrollDistance = sectionOffset - startY;  //მაძილის გამოთვლა
+  let startTime;
 
-video.addEventListener('contextmenu', (event) => {
-  event.preventDefault();
-});
+  //^ანიმაცის სტილი
+  const easeInOut = (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t);
 
-video.addEventListener('ended', () => {
-  video.play();
+  //* სქროლის პოზიცის გამოთვლის ფუნქცია
+  function animation(currentTime) {
+      if (startTime === undefined) {
+          startTime = currentTime;
+      }
+
+      const elapsedTime = currentTime - startTime;
+      const scrollPosition = easeInOut(elapsedTime / duration) * scrollDistance + startY;
+
+      window.scrollTo(0, scrollPosition);
+
+      if (elapsedTime < duration) {
+          requestAnimationFrame(animation);
+      }
+  }
+
+  requestAnimationFrame(animation);
+}
+
+document.getElementById("scrollToNext").addEventListener("click", () => {
+
+  const nextSection = document.getElementById("nextSection");
+  const destination = nextSection.offsetTop;
+
+  //  Smoothly to the next section
+  scrollToSection(destination);
 });
