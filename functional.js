@@ -269,6 +269,50 @@ document.getElementById("scrollToNext").addEventListener("click", () => {
   const nextSection = document.getElementById("nextSection");
   const destination = nextSection.offsetTop;
 
-  //  Smoothly to the next section
   scrollToSection(destination);
 });
+
+
+//* აიქონის დამატება 1300pz რეზოლუციაზე 
+let arrowContainerAdded = false;
+
+function addArrowContainer() {
+  const bannerContent = document.querySelector(".banner_content");
+
+  const arrowContainer = document.createElement("div");
+  arrowContainer.className = "arrow_container";
+
+  const arrowImage = document.createElement("img");
+  arrowImage.className = "arrow topArrow";
+  arrowImage.src = "../image/down-arrow.png";
+  arrowImage.alt = "draw icon";
+  arrowImage.id = "scrollToNext";
+
+  arrowContainer.appendChild(arrowImage);
+  bannerContent.appendChild(arrowContainer);
+
+  arrowImage.addEventListener("click", () => {
+    const nextSection = document.getElementById("nextSection");
+    const destination = nextSection.offsetTop;
+
+    scrollToSection(destination);
+  });
+
+  arrowContainerAdded = true;
+}
+
+function checkScreenWidth() {
+  if (window.innerWidth <= 1300 && !arrowContainerAdded) {
+    addArrowContainer();
+  } else if (window.innerWidth > 1300 && arrowContainerAdded) {
+    // წაიშალოს აიქონი 1300pxზე ზემოთ
+    const arrowContainer = document.querySelector(".arrow_container");
+    if (arrowContainer) {
+      arrowContainer.parentNode.removeChild(arrowContainer);
+    }
+    arrowContainerAdded = false; 
+  }
+}
+
+window.addEventListener("resize", checkScreenWidth);
+checkScreenWidth();

@@ -32,13 +32,13 @@ body {
 
 header {
   min-height: 4.375rem;
-  position: fixed; 
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   background-color: var(--color-dark-gunmetal);
   border-bottom: 0.0625rem solid var(--color-gunmetal);
-  z-index: 1;
+  z-index: 100;
   transition: opacity 0.5s ease, transform 0.5s ease;
   padding: 0 1.875rem;
 }
@@ -91,7 +91,8 @@ header {
   border-bottom-color: var(--color-blue-hover);
 }
 
-.register_btn, .more_btn {
+.register_btn,
+.more_btn {
   padding: 0.6875rem 1.25rem;
   border-radius: 0.75rem;
   background-color: var(--color-gunmetal);
@@ -99,7 +100,8 @@ header {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.register_btn:hover ,.more_btn:hover{
+.register_btn:hover,
+.more_btn:hover {
   background-color: var(--color-blue-hover);
   transform: scale(1.05);
 }
@@ -376,13 +378,21 @@ input[type="checkbox"] {
   display: flex;
   gap: 10px;
 }
-/**------------------------------ Banner Section */ 
+
+/**------------------------------ Banner Section */
 .banner_section {
+  width: 95%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   flex-direction: row-reverse;
+  flex-wrap: wrap;
+  margin: auto;
+  overflow: hidden;
+
+
 }
+
 
 #customVideo::-webkit-media-controls,
 #customVideo::-webkit-media-controls-enclosure,
@@ -406,8 +416,8 @@ input[type="checkbox"] {
 
 .banner_content {
   width: clamp(100px, 100%, 635px);
-  height: 600px;
   text-align: center;
+  z-index: 1;
 }
 
 
@@ -422,25 +432,27 @@ input[type="checkbox"] {
   word-spacing: 5px;
   letter-spacing: 5px;
   background-image: linear-gradient(to right, #fbff00, #ff9100);
-  -webkit-background-clip: text; /* For Safari/Chrome */
+  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
+
 .share {
   line-height: 70px;
 }
+
 .about_text {
   line-height: 30px;
   margin: 35px;
   padding-bottom: 15px;
   text-align: start;
-  border-bottom: 2px solid  rgb(194, 253, 194) ;
+  border-bottom: 2px solid rgb(194, 253, 194);
 }
 
 .more_btn {
-width: 350px;
-height: 50px;
-font-size: 17px;
+  width: clamp(20px, 100%, 350px);
+  height: 50px;
+  font-size: 17px;
 }
 
 .arrow_container {
@@ -450,11 +462,11 @@ font-size: 17px;
 }
 
 .arrow {
- width: 50px;
- margin-top: -50px;
- border-radius: 50%;
-  animation: slideUpDown 2s infinite alternate; 
+  width: 50px;
+  border-radius: 50%;
+  animation: slideUpDown 2s infinite alternate;
 }
+
 .arrow:hover {
   box-shadow: 12px 21px 118px 10px var(--color-blue-hover);
 }
@@ -463,20 +475,34 @@ font-size: 17px;
   0% {
     transform: translateY(0);
   }
+
   100% {
-    transform: translateY(10px); 
+    transform: translateY(10px);
   }
 }
 
-.about_section{
+.about_section {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+
+@media only screen and (max-width: 1440px) {
+  .banner_section {
+    width: 100%;
+  }
+
+  .about_text {
+    width: 80%;
+  }
+
+}
+
 /**--------------------------- Media Query 1300px */
 @media only screen and (max-width: 1300px) {
+  /** registration page */
   #registration_container {
     flex-wrap: wrap;
     padding: 17px 30px;
@@ -497,8 +523,43 @@ font-size: 17px;
     font-size: 16px;
   }
 
+/** banner Section */ 
   .banner_section {
     flex-direction: column;
+    align-items: center;
+    min-height: 860px;
+  }
+
+  .banner_content {
+    width: 90%;
+    position: absolute;
+    z-index: 2;
+    margin-top: -240px;
+  }
+
+  #customVideo {
+    width: 900px;
+    height: auto;
+    z-index: 1;
+    border-radius: 8px;
+    margin-top: -12px;
+    transform: rotate(270deg);
+  }
+
+  .contain {
+    margin-top: -300px;
+  }
+
+  .arrow {
+    margin-top: -300px;
+  }
+
+  .hidearrow {
+    display: none;
+  }
+
+  .topArrow {
+    margin-top: 53px;
   }
 }
 
@@ -550,7 +611,7 @@ font-size: 17px;
     border-bottom-color: var(--color-blue-hover);
   }
 
-  /* Registracion Page */
+  /** */ Registracion Page */
   .name-input {
     margin-bottom: 0px;
   }
@@ -571,10 +632,20 @@ font-size: 17px;
   transform: translateY(0);
 }
 
+@media only screen and (max-width: 425px) {
+  .welcome {
+    font-size: 20px;
+  }
 
+  .about_text {
+    font-size: 15px;
+    line-height: 26px;
+  }
+}
 
 
 @media only screen and (max-width: 360px) {
+  /* * registration Page */
   #registration_container {
     padding: 11px;
   }
@@ -602,5 +673,27 @@ font-size: 17px;
     font-size: 12px;
   }
 
+  .share,
+  .welcome {
+    font-size: 15px;
+    line-height: 24px;
+  }
+/**banner section  */
+  .about_text {
+    width: 90%;
+    margin: 35px 0;
+    font-size: 12px;
+  }
 
+  .more_btn {
+    font-size: 13px;
+  }
+
+  .topArrow {
+    margin-top: 33px;
+  }
+
+  .banner_content {
+    margin-top: -328px;
+  }
 }
