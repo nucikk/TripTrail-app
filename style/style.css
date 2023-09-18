@@ -389,8 +389,6 @@ input[type="checkbox"] {
   flex-wrap: wrap;
   margin: auto;
   overflow: hidden;
-
-
 }
 
 
@@ -401,7 +399,6 @@ input[type="checkbox"] {
   display: none !important;
 }
 
-/* Disable context menu to prevent zooming */
 #customVideo {
   pointer-events: none;
 }
@@ -459,12 +456,14 @@ input[type="checkbox"] {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* margin-bottom: 64px; */
+
 }
 
 .arrow {
   width: 50px;
   border-radius: 50%;
-  animation: slideUpDown 2s infinite alternate;
+  animation: slideUpDown .6s infinite alternate;
 }
 
 .arrow:hover {
@@ -480,15 +479,104 @@ input[type="checkbox"] {
     transform: translateY(10px);
   }
 }
-
+/** Roadmap Section */
 .about_section {
-  height: 100vh;
+  margin-top: 65px;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
+.roadmap {
+  width: clamp(200px, 100%, 1064px);
+  text-align: center;
+  overflow: hidden;
+}
 
+.service {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0;
+}
+
+.title {
+  line-height: 54px;
+}
+
+.service_name {
+  margin: 10px 0;
+  color: #FFD600;
+}
+
+.service_list {
+  line-height: 23px;
+  text-align: start;
+}
+
+.creatorInfo {
+  border-radius: 24px;
+  border: 3px solid #FFD12F;
+  background: #ffffff05;
+  margin-top: 50px;
+}
+
+.country {
+  width: clamp(200px, 100%, 701px);
+  min-height: 196px;
+  margin: 20px auto;
+}
+
+.countryBox {
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.10);
+  display: inline-flex;
+  padding: 8px 20px 8px 8px;
+  align-items: center;
+  gap: 16px;
+  margin: 19px 5px -1px;
+}
+
+.card {
+  width: clamp(200px, 100%, 904px);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  margin: 20px auto;
+  gap: 40px;
+}
+
+.card_content {
+  width: clamp(200px, 100%, 432px);
+  min-height: 236px;
+  color: #FFF;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 32px;
+  border-radius: 16px;
+  padding: 28px;
+  background: #ffffff1a;
+}
+
+.reviews_section {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+background-color: #E84142;
+}
+.uparrow {
+  width: 40px;
+  position: fixed;
+  right: 20px;
+  bottom: 10px;
+  z-index: 999; /* Optional: To ensure it appears above other content */
+  
+}
+/**--------------------------- Media Query 1440px */
 @media only screen and (max-width: 1440px) {
   .banner_section {
     width: 100%;
@@ -500,8 +588,11 @@ input[type="checkbox"] {
 
 }
 
+
+
 /**--------------------------- Media Query 1300px */
 @media only screen and (max-width: 1300px) {
+
   /** registration page */
   #registration_container {
     flex-wrap: wrap;
@@ -523,7 +614,7 @@ input[type="checkbox"] {
     font-size: 16px;
   }
 
-/** banner Section */ 
+  /** banner Section */
   .banner_section {
     flex-direction: column;
     align-items: center;
@@ -534,7 +625,6 @@ input[type="checkbox"] {
     width: 90%;
     position: absolute;
     z-index: 2;
-    margin-top: -240px;
   }
 
   #customVideo {
@@ -547,7 +637,8 @@ input[type="checkbox"] {
   }
 
   .contain {
-    margin-top: -300px;
+    max-height: 1291px;
+    margin-top: -311px;
   }
 
   .arrow {
@@ -561,7 +652,23 @@ input[type="checkbox"] {
   .topArrow {
     margin-top: 53px;
   }
+  .service {
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
 }
+.card {
+ flex-direction: column;
+}
+.creatorInfo {
+  flex-wrap: wrap;
+}
+.card_content {
+  width: clamp(200px, 90%, 721px);
+}
+}
+
 
 
 /* Media Query 820px */
@@ -611,7 +718,7 @@ input[type="checkbox"] {
     border-bottom-color: var(--color-blue-hover);
   }
 
-  /** */ Registracion Page */
+  /**  Registracion Page */*/
   .name-input {
     margin-bottom: 0px;
   }
@@ -622,8 +729,6 @@ input[type="checkbox"] {
     line-height: 40px;
     letter-spacing: 2px;
   }
-
-
 
 }
 
@@ -645,6 +750,7 @@ input[type="checkbox"] {
 
 
 @media only screen and (max-width: 360px) {
+
   /* * registration Page */
   #registration_container {
     padding: 11px;
@@ -678,7 +784,8 @@ input[type="checkbox"] {
     font-size: 15px;
     line-height: 24px;
   }
-/**banner section  */
+
+  /**banner section  */
   .about_text {
     width: 90%;
     margin: 35px 0;

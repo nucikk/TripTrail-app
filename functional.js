@@ -316,3 +316,43 @@ function checkScreenWidth() {
 
 window.addEventListener("resize", checkScreenWidth);
 checkScreenWidth();
+
+
+//* ფუნქცია uparrow აიქონისთვის რომ გამოჩნდეს მეორე სეექციიდან
+function toggleUpArrowVisibility() {
+  const upArrow = document.querySelector(".uparrow");
+  if (window.scrollY > 0) {
+    upArrow.style.display = "block";
+  } else {
+    upArrow.style.display = "none";
+  }
+}
+
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth" 
+  });
+}
+
+
+toggleUpArrowVisibility();
+
+window.addEventListener("scroll", toggleUpArrowVisibility);
+const upArrow = document.querySelector(".uparrow");
+upArrow.addEventListener("click", scrollToTop);
+
+//* ფუნქცია სქროლის ანიმაციისთვის
+function scrollToTop() {
+  const scrollDuration = 1000; 
+  const scrollStep = -window.scrollY / (scrollDuration / 15);
+
+  function scroll() {
+    if (window.scrollY > 0) {
+      window.scrollBy(0, scrollStep);
+      requestAnimationFrame(scroll);
+    }
+  }
+
+  requestAnimationFrame(scroll);
+}
