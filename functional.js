@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const phoneValue = phoneInput.value.trim();
 
     //* validate Full Name (შეამოწმებს სახელი არის თუ არა (!fullName) ან გამოიტანს შესაბამის ერორ მესიჯს)  
-   if (!fullName) {
+    if (!fullName) {
       showError(fullNameError, 'Full Name is required');
     } else {
       hideError(fullNameError);
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!pasLowerCase) unmetConditions.push('1 lowercase letter');
     if (!passNumber) unmetConditions.push('1 number');
     if (!passSymbol) unmetConditions.push('1 symbol (._*@-)');
-        
+
     if (!password) {
       showError(passwordError, 'Password is required');
     } else if (unmetConditions.length === 0) {
@@ -181,18 +181,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-   //* Function to show the success message
+  //* Function to show the success message
   function showSuccessMessage() {
     successContainer.style.display = 'block';
 
   }
   //* add event listener to the "Continue" button
   continueButton.addEventListener('click', (event) => {
-    event.preventDefault(); 
-  
+    event.preventDefault();
+
     const fullName = fullNameInput.value;
     localStorage.setItem('fullName', fullName);
-  
+
     const usernameSpan = document.querySelector('#username');
     if (usernameSpan) {
       usernameSpan.textContent = fullName;
@@ -201,17 +201,17 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       console.log('Continue button clicked');
       window.location.href = './account.html';
-    }, 100); 
+    }, 100);
   });
 
   function showError(element, message) {
     element.textContent = message;
-    element.style.display = 'block'; 
+    element.style.display = 'block';
   }
-  
+
   function hideError(element) {
     element.textContent = '';
-    element.style.display = 'none'; 
+    element.style.display = 'none';
   }
 
   function formatAndSetPhone(inputElement, phoneValue) {
@@ -247,18 +247,18 @@ function scrollToSection(sectionOffset, duration = 1000) {
 
   //* სქროლის პოზიცის გამოთვლის ფუნქცია
   function animation(currentTime) {
-      if (startTime === undefined) {
-          startTime = currentTime;
-      }
+    if (startTime === undefined) {
+      startTime = currentTime;
+    }
 
-      const elapsedTime = currentTime - startTime;
-      const scrollPosition = easeInOut(elapsedTime / duration) * scrollDistance + startY;
+    const elapsedTime = currentTime - startTime;
+    const scrollPosition = easeInOut(elapsedTime / duration) * scrollDistance + startY;
 
-      window.scrollTo(0, scrollPosition);
+    window.scrollTo(0, scrollPosition);
 
-      if (elapsedTime < duration) {
-          requestAnimationFrame(animation);
-      }
+    if (elapsedTime < duration) {
+      requestAnimationFrame(animation);
+    }
   }
 
   requestAnimationFrame(animation);
@@ -310,7 +310,7 @@ function checkScreenWidth() {
     if (arrowContainer) {
       arrowContainer.parentNode.removeChild(arrowContainer);
     }
-    arrowContainerAdded = false; 
+    arrowContainerAdded = false;
   }
 }
 
@@ -331,7 +331,7 @@ function toggleUpArrowVisibility() {
 function scrollToTop() {
   window.scrollTo({
     top: 0,
-    behavior: "smooth" 
+    behavior: "smooth"
   });
 }
 
@@ -344,7 +344,7 @@ upArrow.addEventListener("click", scrollToTop);
 
 //* ფუნქცია სქროლის ანიმაციისთვის
 function scrollToTop() {
-  const scrollDuration = 1000; 
+  const scrollDuration = 1000;
   const scrollStep = -window.scrollY / (scrollDuration / 15);
 
   function scroll() {
@@ -356,3 +356,144 @@ function scrollToTop() {
 
   requestAnimationFrame(scroll);
 }
+
+
+
+//*ასინქრონლი ფუნქცია მოანცემების წამოღება აიპიდან შეფასების სექციისთვის
+// async function fetchUserData() {
+//   try {
+//       const response = await fetch('https://reqres.in/api/users?page=1');
+
+//       if (!response.ok) {
+//           throw new Error('Network response was not ok');
+//       }
+
+//       const data = await response.json();
+//       const users = data.data;
+
+//       const userReviewsContainer = document.getElementById('user-reviews');
+
+//       const colors = ['#121E28', '#233748c3', '#1a1324b7', '#16241a89'];
+
+//       // Array of comments
+//       const comments = [
+//           "love the user-friendly interface of this site. It's so easy to compare prices and options. I've saved a ton of money by booking through them.",
+//           "The travel packages offered here are incredible.",
+//           "I booked an all-inclusive deal, and it was worth every penny. Everything was well-organized, and I had a blast!",
+//           "The site helped me discover hidden gems in every city I visited. I wouldn't have known about these places without their travel guides. Truly a gem of a site!",
+//           "I always recommend this site to my friends and family. It's my go-to for all my travel needs. Thanks for making my vacations stress-free and enjoyable.",
+//           "The loyalty rewards program is a game-changer. I've earned so many points and discounts by booking through this site. It's like getting rewarded for having fun!",
+//           "I had an issue with a hotel reservation, and the support team resolved it within minutes. That level of service is what keeps me coming back."
+//       ];
+
+//       users.forEach((user, index) => {
+//           const userReview = document.createElement('div');
+//           userReview.className = 'card_views';
+
+//           const backgroundColor = colors[index % colors.length];
+//           userReview.style.backgroundColor = backgroundColor;
+
+//           // Assign a comment to each user
+//           const comment = comments[index % comments.length];
+
+//           userReview.innerHTML = `
+//               <div class="userInfo">
+//                   <img class="userImg" src="${user.avatar}" alt="User Image" />
+//                   <h4 class="userName FtMono">${user.first_name} ${user.last_name}</h4>
+//                   <div class="userMail">
+//                       <p>${user.email}</p>
+//                   </div>
+//               </div>
+//               <div class="comment">
+//                   <p class="commentary">${comment}</p>
+//               </div>
+//               <div class="stars">
+//                   <img src="../image/Stars.svg" alt="Stars" />
+//               </div>
+//           `;
+
+//           userReviewsContainer.appendChild(userReview);
+//       });
+//   } catch (error) {
+//       console.error('Error fetching and displaying data:', error);
+//   }
+// }
+
+// fetchUserData();
+
+
+
+//* ფუნქცია API-დან მომხმარებლის მონაცემების წამოსაღებად
+async function fetchUserData() {
+  try {
+    const response = await fetch('https://reqres.in/api/users?page=1');
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const data = await response.json();
+    const users = data.data;
+
+    return users;
+  } catch (error) {
+    throw new Error('Error fetching user data:', error);
+  }
+}
+
+function createUserReview(user, comment, backgroundColor) {
+  const userReview = document.createElement('div');
+  userReview.className = 'card_views';
+  userReview.style.backgroundColor = backgroundColor;
+
+  userReview.innerHTML = `
+      <div class="userInfo">
+          <img class="userImg" src="${user.avatar}" alt="User Image" />
+          <h4 class="userName FtMono">${user.first_name} ${user.last_name}</h4>
+          <div class="userMail">
+              <p>${user.email}</p>
+          </div>
+      </div>
+      <div class="comment">
+          <p class="commentary">${comment}</p>
+      </div>
+      <div class="stars">
+          <img src="../image/Stars.svg" alt="Stars" />
+      </div>
+  `;
+
+  return userReview;
+}
+
+//* ფუნქცია შეფასბის სექციაში ინფორმაცის დასამატებლად
+async function addUserReviewsToContainer() {
+  try {
+    const users = await fetchUserData();
+
+    const userReviewsContainer = document.getElementById('user-reviews');
+    const colors = ['#121E28', '#233748c3', '#1a1324b7', '#16241a89'];
+
+    // Array of comments
+    const comments = [
+      "love the user-friendly interface of this site. It's so easy to compare prices and options. I've saved a ton of money by booking through them.",
+      "The travel packages offered here are incredible.",
+      "I booked an all-inclusive deal, and it was worth every penny. Everything was well-organized, and I had a blast!",
+      "The site helped me discover hidden gems in every city I visited. I wouldn't have known about these places without their travel guides. Truly a gem of a site!",
+      "I always recommend this site to my friends and family. It's my go-to for all my travel needs. Thanks for making my vacations stress-free and enjoyable.",
+      "The loyalty rewards program is a game-changer. I've earned so many points and discounts by booking through this site. It's like getting rewarded for having fun!",
+      "I had an issue with a hotel reservation, and the support team resolved it within minutes. That level of service is what keeps me coming back."
+
+    ];
+
+    users.forEach((user, index) => {
+      const backgroundColor = colors[index % colors.length];
+      const comment = comments[index % comments.length];
+      const userReview = createUserReview(user, comment, backgroundColor);
+      userReviewsContainer.appendChild(userReview);
+    });
+  } catch (error) {
+    console.error('Error:', error.message);
+  }
+}
+
+addUserReviewsToContainer();

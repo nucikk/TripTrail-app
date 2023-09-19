@@ -479,6 +479,7 @@ input[type="checkbox"] {
     transform: translateY(10px);
   }
 }
+
 /** Roadmap Section */
 .about_section {
   margin-top: 65px;
@@ -565,36 +566,38 @@ input[type="checkbox"] {
   justify-content: center;
   align-items: center;
 }
+
 .uparrow {
   width: 40px;
   position: fixed;
   right: 20px;
   bottom: 10px;
-  z-index: 111; 
+  z-index: 111;
 }
 
 .destinations {
-  width: clamp(200px,100%, 1102px);
+  width: clamp(200px, 100%, 1102px);
   text-align: center;
-  display: flex; 
-  flex-direction: column; 
-  align-items: center; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   overflow: hidden;
+  margin: 30px 0;
 }
 
 .rev {
   display: block;
-  text-align: center; 
-  margin-bottom: 20px; 
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .cityCard {
   width: clamp(100px, 100%, 358px);
   position: relative;
   display: flex;
-  align-items: center; 
+  align-items: center;
   text-align: center;
-  margin: 10px; 
+  margin: 10px;
 }
 
 .cityImg {
@@ -608,13 +611,13 @@ input[type="checkbox"] {
   position: absolute;
   bottom: 0;
   left: 0;
-  background-color: #1B2A40; 
+  background-color: #1B2A40;
   padding: 10px;
   border-radius: 8px;
 }
 
 .cityName {
-  font-size: 24px;
+  font-size: 18px;
   color: yellow;
   margin-bottom: 5px;
 }
@@ -634,6 +637,72 @@ input[type="checkbox"] {
   display: flex;
 }
 
+.reviews {
+  width: 90%;
+    min-height: 597px;   
+     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    gap: 37px;
+}
+.reviews_heading {
+  color: #ffd600;
+  text-align: center;
+  line-height: 70px;
+  font-size: 40px;
+  letter-spacing: 5px;
+}
+
+.card_views {
+  width: 444px;
+  height: 260px;
+  padding: 29px;
+  border-radius: 20px;
+  border: 1px solid #ffffff;
+  background: #121E28;
+  backdrop-filter: blur(2px);
+}
+.card_views:hover {
+  box-shadow: 4px 4px 18px 2px #ffd600;
+  transform: translateY(-5px); 
+  transition: transform 0.3s ease; 
+}
+
+
+.userInfo {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.userImg {
+  width: 46px;
+  height: 46px;
+  border-radius: 100px;
+}
+
+.userName {
+  font-weight: 800;
+}
+.userMail {
+  font-style: italic;
+  font-size: 14px;
+  font-weight: lighter;
+}
+.userMail p{
+    color: #cfe6fab0;
+}
+.commentary {
+  line-height: 22px;
+  margin: 20px 0;
+  text-align: center;
+}
+.stars {
+   width: 100%;
+   text-align: center;
+}
 
 /**--------------------------- Media Query 1440px */
 @media only screen and (max-width: 1440px) {
@@ -646,7 +715,6 @@ input[type="checkbox"] {
   }
 
 }
-
 
 
 /**--------------------------- Media Query 1300px */
@@ -711,23 +779,27 @@ input[type="checkbox"] {
   .topArrow {
     margin-top: 53px;
   }
+
   .service {
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 30px;
-}
-.card {
- flex-direction: column;
-}
-.creatorInfo {
-  flex-wrap: wrap;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .card {
+    flex-direction: column;
+  }
+
+  .creatorInfo {
+    flex-wrap: wrap;
     width: 90%;
     margin: 0 auto;
-}
-.card_content {
-  width: clamp(200px, 90%, 721px);
-}
+  }
+
+  .card_content {
+    width: clamp(200px, 90%, 721px);
+  }
 }
 
 @media only screen and (max-width:1024px) {
@@ -737,6 +809,7 @@ input[type="checkbox"] {
     align-items: center;
     width: 90%;
   }
+
   .cityCard {
     width: 100%;
   }
@@ -790,8 +863,8 @@ input[type="checkbox"] {
     border-bottom-color: var(--color-blue-hover);
   }
 
-  /**  Registracion Page */*/
-  .name-input {
+  /**  Registracion Page */
+  */ .name-input {
     margin-bottom: 0px;
   }
 
