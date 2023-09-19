@@ -12,6 +12,7 @@ h4,p,a,img,strong,b,u,i,ol,ul,li,article {
 }
 article,footer,header,menu,nav,section {
   display: block;
+  overflow:hidden;
 }
 body {
   line-height: 1;

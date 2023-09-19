@@ -561,12 +561,6 @@ input[type="checkbox"] {
   background: #ffffff1a;
 }
 
-.reviews_section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .uparrow {
   width: 40px;
   position: fixed;
@@ -582,7 +576,7 @@ input[type="checkbox"] {
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-  margin: 30px 0;
+  margin: 30px auto;
 }
 
 .rev {
@@ -636,6 +630,12 @@ input[type="checkbox"] {
 .contentCityInfo {
   display: flex;
 }
+/** */ Reviews SEction */
+.reviews_section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .reviews {
   width: 90%;
@@ -647,6 +647,7 @@ input[type="checkbox"] {
     margin: 0 auto;
     gap: 37px;
 }
+
 .reviews_heading {
   color: #ffd600;
   text-align: center;
@@ -656,20 +657,20 @@ input[type="checkbox"] {
 }
 
 .card_views {
-  width: 444px;
+  width: clamp(150px, 100%, 444px);
   height: 260px;
   padding: 29px;
   border-radius: 20px;
   border: 1px solid #ffffff;
   background: #121E28;
   backdrop-filter: blur(2px);
+  overflow: hidden;
 }
 .card_views:hover {
   box-shadow: 4px 4px 18px 2px #ffd600;
   transform: translateY(-5px); 
   transition: transform 0.3s ease; 
 }
-
 
 .userInfo {
   display: flex;
@@ -702,6 +703,26 @@ input[type="checkbox"] {
 .stars {
    width: 100%;
    text-align: center;
+}
+.slideIcon {
+  display: none;
+}
+
+.slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slideIcon {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
+}
+
+.card_views {
+  display: none;
 }
 
 /**--------------------------- Media Query 1440px */
@@ -800,8 +821,23 @@ input[type="checkbox"] {
   .card_content {
     width: clamp(200px, 90%, 721px);
   }
+
+  .slideIcon {
+    width: 30px;
+    display: inline-block;
+  }
+
+  .reviews {
+    min-height: 328px;
+  }
+  .navigator {
+    width: 100%;
+    height: 70px;
+    text-align: center;
+  }
 }
 
+/** media 1024px */
 @media only screen and (max-width:1024px) {
   .contentCityInfo {
     flex-direction: column;
@@ -813,10 +849,13 @@ input[type="checkbox"] {
   .cityCard {
     width: 100%;
   }
+  .card_views {
+    width: clamp(200px, 100%, 698px);
+  }
 }
 
 
-/* Media Query 820px */
+/** Media Query 820px */
 @media only screen and (max-width: 51.25rem) {
 
   .register_btn,
@@ -875,12 +914,31 @@ input[type="checkbox"] {
     letter-spacing: 2px;
   }
 
+  .slider {
+    width: 90%;
+    margin: 0 auto;
+  }
+
 }
 
 .navbar {
   transition: transform 0.5s ease-in-out;
   transform: translateY(0);
 }
+
+@media only screen and (max-width: 475px) {
+  .commentary {
+   font-size: 12px;
+  }
+  .userInfo {
+    flex-wrap: wrap;
+  }
+  .card_views {
+    height: auto;
+
+  }
+}
+
 
 @media only screen and (max-width: 425px) {
   .welcome {
@@ -895,7 +953,6 @@ input[type="checkbox"] {
 
 
 @media only screen and (max-width: 360px) {
-
   /* * registration Page */
   #registration_container {
     padding: 11px;
@@ -947,5 +1004,9 @@ input[type="checkbox"] {
 
   .banner_content {
     margin-top: -328px;
+  }
+
+  .reviews_heading {
+    font-size: 20px;
   }
 }

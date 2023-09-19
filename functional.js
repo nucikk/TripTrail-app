@@ -359,71 +359,7 @@ function scrollToTop() {
 
 
 
-//*ასინქრონლი ფუნქცია მოანცემების წამოღება აიპიდან შეფასების სექციისთვის
-// async function fetchUserData() {
-//   try {
-//       const response = await fetch('https://reqres.in/api/users?page=1');
-
-//       if (!response.ok) {
-//           throw new Error('Network response was not ok');
-//       }
-
-//       const data = await response.json();
-//       const users = data.data;
-
-//       const userReviewsContainer = document.getElementById('user-reviews');
-
-//       const colors = ['#121E28', '#233748c3', '#1a1324b7', '#16241a89'];
-
-//       // Array of comments
-//       const comments = [
-//           "love the user-friendly interface of this site. It's so easy to compare prices and options. I've saved a ton of money by booking through them.",
-//           "The travel packages offered here are incredible.",
-//           "I booked an all-inclusive deal, and it was worth every penny. Everything was well-organized, and I had a blast!",
-//           "The site helped me discover hidden gems in every city I visited. I wouldn't have known about these places without their travel guides. Truly a gem of a site!",
-//           "I always recommend this site to my friends and family. It's my go-to for all my travel needs. Thanks for making my vacations stress-free and enjoyable.",
-//           "The loyalty rewards program is a game-changer. I've earned so many points and discounts by booking through this site. It's like getting rewarded for having fun!",
-//           "I had an issue with a hotel reservation, and the support team resolved it within minutes. That level of service is what keeps me coming back."
-//       ];
-
-//       users.forEach((user, index) => {
-//           const userReview = document.createElement('div');
-//           userReview.className = 'card_views';
-
-//           const backgroundColor = colors[index % colors.length];
-//           userReview.style.backgroundColor = backgroundColor;
-
-//           // Assign a comment to each user
-//           const comment = comments[index % comments.length];
-
-//           userReview.innerHTML = `
-//               <div class="userInfo">
-//                   <img class="userImg" src="${user.avatar}" alt="User Image" />
-//                   <h4 class="userName FtMono">${user.first_name} ${user.last_name}</h4>
-//                   <div class="userMail">
-//                       <p>${user.email}</p>
-//                   </div>
-//               </div>
-//               <div class="comment">
-//                   <p class="commentary">${comment}</p>
-//               </div>
-//               <div class="stars">
-//                   <img src="../image/Stars.svg" alt="Stars" />
-//               </div>
-//           `;
-
-//           userReviewsContainer.appendChild(userReview);
-//       });
-//   } catch (error) {
-//       console.error('Error fetching and displaying data:', error);
-//   }
-// }
-
-// fetchUserData();
-
-
-
-//* ფუნქცია API-დან მომხმარებლის მონაცემების წამოსაღებად
+// //* /* ფუნქცია API-დან მომხმარებლის მონაცემების წამოსაღებად
 async function fetchUserData() {
   try {
     const response = await fetch('https://reqres.in/api/users?page=1');
@@ -441,35 +377,51 @@ async function fetchUserData() {
   }
 }
 
+
+
 function createUserReview(user, comment, backgroundColor) {
   const userReview = document.createElement('div');
   userReview.className = 'card_views';
   userReview.style.backgroundColor = backgroundColor;
 
   userReview.innerHTML = `
-      <div class="userInfo">
-          <img class="userImg" src="${user.avatar}" alt="User Image" />
-          <h4 class="userName FtMono">${user.first_name} ${user.last_name}</h4>
-          <div class="userMail">
-              <p>${user.email}</p>
-          </div>
+    <div class="userInfo">
+      <img class="userImg" src="${user.avatar}" alt="User Image" />
+      <h4 class="userName FtMono">${user.first_name} ${user.last_name}</h4>
+      <div class="userMail">
+        <p>${user.email}</p>
       </div>
-      <div class="comment">
-          <p class="commentary">${comment}</p>
-      </div>
-      <div class="stars">
-          <img src="../image/Stars.svg" alt="Stars" />
-      </div>
+    </div>
+    <div class="comment">
+      <p class="commentary">${comment}</p>
+    </div>
+    <div class="stars">
+      <img src="../image/Stars.svg" alt="Stars" />
+    </div>
   `;
 
   return userReview;
+}
+//* ფუნქცია API-დან მომხმარებლის მონაცემების წამოსაღებად
+async function fetchUserData() {
+  try {
+    const response = await fetch('https://reqres.in/api/users?page=1');
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const { data } = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error('Error fetching user data: ' + error.message);
+  }
 }
 
 //* ფუნქცია შეფასბის სექციაში ინფორმაცის დასამატებლად
 async function addUserReviewsToContainer() {
   try {
     const users = await fetchUserData();
-
     const userReviewsContainer = document.getElementById('user-reviews');
     const colors = ['#121E28', '#233748c3', '#1a1324b7', '#16241a89'];
 
@@ -482,14 +434,57 @@ async function addUserReviewsToContainer() {
       "I always recommend this site to my friends and family. It's my go-to for all my travel needs. Thanks for making my vacations stress-free and enjoyable.",
       "The loyalty rewards program is a game-changer. I've earned so many points and discounts by booking through this site. It's like getting rewarded for having fun!",
       "I had an issue with a hotel reservation, and the support team resolved it within minutes. That level of service is what keeps me coming back."
-
     ];
-
     users.forEach((user, index) => {
       const backgroundColor = colors[index % colors.length];
       const comment = comments[index % comments.length];
       const userReview = createUserReview(user, comment, backgroundColor);
       userReviewsContainer.appendChild(userReview);
+    });
+
+
+    let currentIndex = 0;
+    const sliderContainer = document.querySelector('.slider');
+    const sliderReviews = document.querySelectorAll('.card_views');
+    const totalReviews = sliderReviews.length;
+    const visibleReviews = 2;
+
+    function showReviews(startIndex) {
+      sliderReviews.forEach((review, i) => {
+        review.style.display = i >= startIndex && i < startIndex + visibleReviews ? 'block' : 'none';
+      });
+    }
+
+    //* ყველა ელმენტი გამოჩნდეს 1300 რეზოლუციაზე მაღლა
+    function handleViewportChange() {
+      if (window.innerWidth >= 1300) {
+        sliderReviews.forEach((review) => {
+          review.style.display = 'block';
+        });
+      } else {
+        showReviews(currentIndex);
+      }
+    }
+
+    handleViewportChange();
+    window.addEventListener('resize', handleViewportChange);
+
+    // next button 
+    document.querySelector('.slideIcon.next').addEventListener('click', () => {
+      currentIndex += visibleReviews;
+      if (currentIndex >= totalReviews) {
+        currentIndex = 0;
+      }
+      showReviews(currentIndex);
+    });
+
+    //back button 
+    document.querySelector('.slideIcon.back').addEventListener('click', () => {
+      currentIndex -= visibleReviews;
+      if (currentIndex < 0) {
+        currentIndex = 0;
+      }
+      showReviews(currentIndex);
     });
   } catch (error) {
     console.error('Error:', error.message);
