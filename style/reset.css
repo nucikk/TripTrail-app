@@ -1,34 +1,86 @@
 * {
-    box-sizing: border-box;
-  }
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
 }
-html,body,div,span,h1,h2,h3,
-h4,p,a,img,strong,b,u,i,ol,ul,li,article {
+
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+p,
+a,
+img,
+strong,
+b,
+u,
+i,
+ol,
+ul,
+li,
+article {
   margin: 0;
   padding: 0;
   border: 0;
 }
-article,footer,header,menu,nav,section {
+
+article,
+footer,
+header,
+menu,
+nav,
+section {
   display: block;
-  overflow:hidden;
+  overflow: hidden;
 }
+
 body {
   line-height: 1;
 }
-ol,ul {
+
+ol,
+ul {
   list-style: none;
 }
+
 a {
   text-decoration: none;
 }
-select, option,input, textarea {
-  border:0px;
+
+select,
+option,
+input,
+textarea {
+  border: 0px;
   outline: none;
 }
+
 button {
   color: #FFF;
   outline: none;
-  border:0px;
+  border: 0px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ffff00c8;
+  border-radius: 8px;
+}
+
+::-ms-scrollbar {
+  width: 12px;
+}
+
+::-ms-scrollbar-thumb {
+  background-color: #3765708e;
+  border-radius: 8px;
 }

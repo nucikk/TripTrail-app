@@ -455,7 +455,7 @@ async function addUserReviewsToContainer() {
       });
     }
 
-    //* ყველა ელმენტი გამოჩნდეს 1300 რეზოლუციაზე მაღლა
+   
     function handleViewportChange() {
       if (window.innerWidth >= 1300) {
         sliderReviews.forEach((review) => {
@@ -492,3 +492,101 @@ async function addUserReviewsToContainer() {
 }
 
 addUserReviewsToContainer();
+
+//* აიპიდან ამინდის მონაცემების წამოღება
+
+const apiKey = "1749be3ec01c4e79d74d629cfc9ddfbb";
+const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+
+const selectableCities = [
+  { name: "Batumi", value: "batumi" },
+  { name: "Tbilisi", value: "Tbilisi" },
+  { name: "Kutaisi", value: "Kutaisi" },
+  { name: "Paris", value: "paris" },
+  { name: "Rome", value: "rome" },
+  { name: "Barcelona", value: "barcelona" },
+  { name: "Amsterdam", value: "amsterdam" },
+  { name: "Prague", value: "prague" },
+  { name: "Tokyo", value: "tokyo" },
+  { name: "Sydney", value: "sydney" },
+  { name: "Mexico ", value: "Mexico " },
+  { name: "Cairo", value: "cairo" }
+];
+
+const searchBox = document.querySelector(".search input");
+const searchBtn = document.querySelector(".search button");
+const weatherIcon = document.querySelector(".weather-icon img");
+const errorCityName = document.querySelector(".errorCityName");
+
+
+function populateCitySelect() {
+  const citySelect = document.getElementById("citySelect");
+  selectableCities.forEach(city => {
+    const option = document.createElement("option");
+    option.value = city.value;
+    option.textContent = city.name;
+    citySelect.appendChild(option);
+  });
+}
+
+populateCitySelect();
+
+async function checkWeather(city) {
+  if (!city) {
+    console.error("Please enter a city name.");
+    return;
+  }
+
+  try {
+    const response = await fetch(`${apiUrl}${city}&appid=${apiKey}`);
+
+    if (!response.ok) {
+      console.error(`City not found (${response.status} - ${response.statusText})`);
+      errorCityName.style.display = "block";
+      return;
+    }
+
+    const data = await response.json();
+    const cityElement = document.querySelector(".city");
+    const tempElement = document.querySelector(".temp");
+    const humidityElement = document.querySelector(".humidity");
+    const windElement = document.querySelector(".wind");
+
+    cityElement.innerHTML = data.name;
+    tempElement.innerHTML = `${Math.round(data.main.temp)}°C`;
+    humidityElement.innerHTML = `${data.main.humidity}%`;
+    windElement.innerHTML = `${data.wind.speed}km/h`;
+
+    const weatherMain = data.weather[0].main;
+
+    const weatherIcons = {
+      Clouds: "../image/Clouds.png",
+      Clear: "../image/Clouds.png",
+      Rain: "../image/Rain.png",
+      Drizzle: "../image/Drizzle.png",
+      Misty: "../image/Mist.png",
+    };
+
+    weatherIcon.src = weatherIcons[weatherMain] || ""; 
+
+    errorCityName.style.display = "none";
+  } catch (error) {
+    console.error("An error occurred:", error);
+  }
+}
+
+const citySelect = document.getElementById("citySelect");
+
+citySelect.addEventListener("change", () => {
+  const selectedCity = citySelect.value; 
+  checkWeather(selectedCity);
+});
+
+
+searchBtn.addEventListener("click", () => {
+  const cityName = searchBox.value.trim();
+  checkWeather(cityName);
+});
+
+
+checkWeather("batumi");

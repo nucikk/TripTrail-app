@@ -243,23 +243,74 @@
       </section>
 
       <section>
-        <h2 class="reviews_heading FtMono">Reviews</h2>     
-        
-             <div class="navigator">
-                    <img class="slideIcon back" src="../image/back.png" alt="back">
-            <img class="slideIcon next" src="../image/next.png" alt="next">
-          </div>
-        <div class="slider">     
+        <h2 class="reviews_heading FtMono">Reviews</h2>
 
-  
-          <div class="slider-controls">
-
-          </div>
+        <div class="navigator">
+          <img class="slideIcon back" src="../image/back.png" alt="back" />
+          <img class="slideIcon next" src="../image/next.png" alt="next" />
+        </div>
+        <div class="slider">
+          <div class="slider-controls"></div>
           <div class="reviews" id="user-reviews"></div>
         </div>
       </section>
-      
+      <!--* weather section -->
+      <section class="weather_section">
+        <div class="conatiner_weather">
+          <h1 class="FtMono weather_heading">
+            Recommended Travel Destinations
+          </h1>
+          <h3 class="FtMono plansText">
+            Planning a day out or a quick trip? Don't forget to check the
+            weather! Our one-day weather forecast provides you with essential
+            information to ensure your plans go smoothly
+          </h3>
+ 
 
+          <div class="cardCity">        
+             <h5>View Global Weather Temperatures</h5>
+             <h4 class="selectText FtMono">Select a suggested city or enter a location to explore</h4>
+            <div class="search">
+              <input
+               class="search_input"
+                type="text"
+                placeholder="Search for travel destinations"
+                spellcheck="false"
+              />
+              <button class="searchbtn">
+                <img class="searchImg" src="../image/search.png" alt="search" />
+              </button>
+            </div>
+            <p class="errorCityName">City not found</p>
+            <select id="citySelect"> </select>
+
+            <div class="weather">
+              <div class="weather-icon">
+                <img src="../image/" alt="Weather Icon" />
+              </div>
+              <h2 class="temp">22°C</h2>
+              <h3 class="city FtMono"></h3>
+              <div class="details">
+                <div class="col">
+                  <img src="../image/humidity.png" alt="humidity" />
+                  <div>
+                    <p class="humidity">50%</p>
+                    <p class="nameTemp">Humidity</p>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <img src="../image/wind.png" alt="wind" />
+                  <div>
+                    <p class="wind">15 km/h</p>
+                    <p class="nameTemp">wind</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   </body>
 </html>
