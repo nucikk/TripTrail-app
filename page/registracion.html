@@ -18,14 +18,14 @@
 </head>
 
 <body>
-  <!-- ^ ---------- Header Section -->
+  <!-- ^  Header Section -->
   <header class="header_trip">
     <div class="navbar">
       <div>
         <img class="logo_header" src="../image/logo-trip.svg" alt="Logo Icon" />
         <h2 id="logo_name">TripTrail</h2>
       </div>
-      <!--^ ---------- Navigation Bar -->
+      <!--^  Navigation Bar -->
       <nav class="nav_item">
         <ul class="nav_list active">
           <li><a href="../page/index.html">Home</a></li>
@@ -33,14 +33,6 @@
       </nav>        
       <div>
 
-        <div id="registrationButtons" class="registration-buttons" style="display: none;">
-          <button class="register_btn">
-            <a href="../page/registration.html">Sign up</a>
-          </button>
-          <button class="register_btn">
-            <a href="../page/registration.html">Login</a>
-          </button>
-        </div>
         <div>
           <img id="burgerIcon" class="menu_icon burger" src="../image/burger-icon.png" alt="burger-icon" />
           <img id="closeIcon" class="menu_icon close" src="../image/close-icon.png" alt="close-icon" />
@@ -48,7 +40,7 @@
       </div>
     </div>
   </header>
-  <!--^ ---------- Registration Section -->
+  <!--^  Registration Section -->
   <main>
     <section>
       <div id="registration_container">
@@ -66,7 +58,7 @@
           </p>
         </div>
 
-        <!--^ ---------- User Form -->
+        <!--^  User Form -->
         <div class="register_card">
           <div class="register_nameItem">
             <h3>Login</h3>
@@ -74,7 +66,7 @@
           </div>
           <form class="user_form" id="registrationForm">
             <div class="form_group">
-              <label for="name">Full Name</label>
+              <label for="fullName">Full Name</label>
               <input type="text" id="fullName" name="fullName" class="name-input" placeholder="Enter Full Name" />
               <div id="fullNameError" class="input_error"></div>
             </div>
@@ -120,6 +112,20 @@
       </div>
     </section>
   </main>
+
+  <footer class="footer">
+    <img class="iconFooterLogo" src="../image/logo-trip.svg" alt="logo">
+    <ul class="listFooter">
+      <li>Roadmap club</li>
+      <li>About</li>
+      <li>Job</li>
+    </ul>
+    <div class="iconFooter">
+      <img src="../image/Icon_twitter.svg" alt="social icon">
+      <img src="../image/Icon_telegram.svg" alt="social icon">
+      <img src="../image/Icon_email.svg" alt="social icon">
+    </div>
+  </footer>
 </body>
 
 </html>

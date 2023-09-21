@@ -27,43 +27,112 @@
         <!--^ ---------- Navigation Bar -->
         <nav class="nav_item">
           <ul class="nav_list active">
-            <li><a href="#">Tips</a></li>
-            <li><a href="#">Community</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="../page/index.html">Tips</a></li>
+            <li><a href="../page/index.html">Community</a></li>
+            <li><a href="../page/index.html">About</a></li>
+            <li><a href="../page/index.html">Contact</a></li>
           </ul>
         </nav>
-   
-          <div class="navbar_icon">
-            <img
-              id="burgerIcon"
-              class="menu_icon burger"
-              src="../image/burger-icon.png"
-              alt="burger-icon"
-            />
 
+        <div class="navbar_icon">
+          <img
+            id="burgerIcon"
+            class="menu_icon burger"
+            src="../image/burger-icon.png"
+            alt="burger-icon"
+          />
+
+          <img
+            id="closeIcon"
+            class="menu_icon close"
+            src="../image/close-icon.png"
+            alt="close-icon"
+          />
+          <div class="user">
             <img
-              id="closeIcon"
-              class="menu_icon close"
-              src="../image/close-icon.png"
-              alt="close-icon"
+              class="account_navIcon"
+              src="../image/post.png"
+              alt="Post icon"
             />
-            <div class="user">
-              <img
-                class="account_navIcon"
-                src="../image/post.png"
-                alt="Post icon"
-              />
-              <img
-                class="account_navIcon user"
-                src="../image/user.png"
-                alt="User Icon"
-              />
-              <span id="username"></span>
-            </div>
+            <img
+              class="account_navIcon user"
+              src="../image/user.png"
+              alt="User Icon"
+            />
+            <span id="username"></span>
           </div>
-        
+        </div>
       </div>
     </header>
+
+    <main>
+      <section class="post_section">
+        <a href="../page/index.html">
+          <img class="backIcon" src="../image/left-arrow.png" alt="back icon" />
+          <span class="cancel">Back</span>
+        </a>
+        <h1 class="journal FtMono">Travel Journal</h1>
+        <h4>
+          Your travels are more than just destinations; they are a collection of
+          moments etched in time, waiting to be unveiled.
+        </h4>
+
+        <form id="postForm">
+          <label class="labelPost" for="title">Post Title:</label>
+          <input
+            type="text"
+            id="title"
+            required
+            placeholder="Enter a title for your post"
+          />
+
+          <label class="labelPost" for="location">Travel Location:</label>
+          <input
+            type="text"
+            id="location"
+            required
+            placeholder="Enter the travel location"
+          />
+
+          <label class="labelPost" for="date">Date of Travel:</label>
+          <input type="date" id="date" required />
+
+          <label for="tags">Tags/Categories:</label>
+          <input
+            type="text"
+            id="tags"
+            placeholder="Add tags separated by commas"
+          />
+
+          <label class="labelPost" for="post">Post:</label>
+          <textarea
+            id="post"
+            rows="4"
+            required
+            placeholder="Share your travel story with us"
+          ></textarea>
+
+          <button class="postSent" type="button" onclick="recordPost()">
+            Sent Post
+          </button>
+        </form>
+
+        <div class="post-container" id="postContainer"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <img class="iconFooterLogo" src="../image/logo-trip.svg" alt="logo">
+      <ul class="listFooter">
+        <li>Roadmap club</li>
+        <li>About</li>
+        <li>Job</li>
+      </ul>
+      <div class="iconFooter">
+        <img src="../image/Icon_twitter.svg" alt="social icon">
+        <img src="../image/Icon_telegram.svg" alt="social icon">
+        <img src="../image/Icon_email.svg" alt="social icon">
+      </div>
+    </footer>
   </body>
 </html>

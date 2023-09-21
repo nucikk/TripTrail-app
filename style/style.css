@@ -97,6 +97,7 @@ header {
   border-radius: 0.75rem;
   background-color: var(--color-gunmetal);
   cursor: pointer;
+  margin: 0 8px;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
@@ -119,6 +120,17 @@ header {
 }
 
 /*Menu Animation */
+@-webkit-keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 @keyframes slideDown {
   from {
     transform: translateY(-100%);
@@ -128,6 +140,18 @@ header {
   to {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+@-webkit-keyframes slideUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
   }
 }
 
@@ -144,12 +168,14 @@ header {
 }
 
 .nav_list.active {
-  animation: slideDown var(--animation-duration) ease-in-out;
+  -webkit-animation: slideDown var(--animation-duration) ease-in-out;
+          animation: slideDown var(--animation-duration) ease-in-out;
 }
 
 .nav_list:not(.active) {
   max-height: 0;
-  animation: slideUp var(--animation-duration) ease-in-out;
+  -webkit-animation: slideUp var(--animation-duration) ease-in-out;
+          animation: slideUp var(--animation-duration) ease-in-out;
   overflow: hidden;
 }
 
@@ -169,30 +195,46 @@ header {
 }
 
 .greetings_card {
-  width: clamp(200px, 100%, 400px);
-  min-height: 300px;
+  width: clamp(12.5rem, 100%, 25rem);
+  min-height: 18.75rem;
   display: grid;
   align-content: space-evenly;
-  box-shadow: 10px 14px 18px 2px rgba(4, 64, 148, 0.487);
+  box-shadow: .625rem .875rem 1.125rem .125rem rgba(4, 64, 148, 0.487);
 }
 
 .backIcon {
-  width: 30px;
+  width: 1.875rem;
   vertical-align: middle;
 }
 
 .cancel,
 .sign_text,
 .signMessage {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-family: "Montserrat", sans-serif;
 }
 
 .sign_text {
-  font-size: 50px;
-  line-height: 65px;
+  font-size: 3.125rem;
+  line-height: 4.0625rem;
   color: var(--color-blue-hover);
-  animation: signText 5s linear infinite;
+  -webkit-animation: signText 5s linear infinite;
+          animation: signText 5s linear infinite;
+}
+
+
+@-webkit-keyframes signText {
+  0% {
+    color: #bc7af9;
+  }
+
+  50% {
+    color: #f8ff95;
+  }
+
+  100% {
+    color: #a6ff96;
+  }
 }
 
 
@@ -211,31 +253,31 @@ header {
 }
 
 .signMessage {
-  font-size: 18px;
-  line-height: 28px;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 .register_card {
-  width: clamp(200px, 100%, 600px);
-  box-shadow: 20px 14px 228px 100px rgba(4, 64, 148, 0.487);
+  width: clamp(12.5rem, 100%, 37.5rem);
+  box-shadow: 1.25rem .875rem 14.25rem 6.25rem rgba(4, 64, 148, 0.487);
 }
 
 .register_nameItem {
-  height: 60px;
+  height: 3.75rem;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  box-shadow: 7px 20px 108px 2px var(--color-yellow);
-  border-bottom: 2px solid var(--color-yellow);
+  box-shadow: .4375rem 1.25rem 6.75rem .125rem var(--color-yellow);
+  border-bottom: .125rem solid var(--color-yellow);
 }
 
 .name-input {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 /* Form Styles */
 .form_group {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .user_form {
@@ -244,7 +286,7 @@ header {
 
 label {
   display: block;
-  margin: 13px 8px;
+  margin: .8125rem .5rem;
 }
 
 .form_group label {
@@ -254,40 +296,42 @@ label {
 input[type="text"],
 input[type="email"],
 input[type="password"],
-input[type="tel"] {
+input[type="tel"],
+input[type="text"],
+input[type="date"] {
   width: 100%;
-  height: 60px;
-  border-radius: 5px;
-  border: 2px solid #038abff0;
+  height: 3.75rem;
+  border-radius: .3125rem;
+  border: .125rem solid #038abff0;
   background-color: #0f202f40;
-  box-shadow: 1px 5px 8px 12px #01369988;
-  padding: 0 20px;
-  margin-bottom: 16px;
+  box-shadow: .0625rem .3125rem .5rem .75rem #01369988;
+  padding: 0 1.25rem;
+  margin-bottom: 1rem;
 }
 
 input[type="checkbox"] {
-  margin-right: 5px;
+  margin-right: .3125rem;
 }
 
 .form_group input:hover {
-  border: 2px solid var(--color-yellow);
-  box-shadow: 0px 1px 5px 0px var(--color-yellow);
+  border: .125rem solid var(--color-yellow);
+  box-shadow: 0rem .0625rem .3125rem 0rem var(--color-yellow);
 }
 
 .form_group input:focus {
-  border: 2px solid var(--color-purple-light);
-  box-shadow: 0px 1px 5px 0px var(--color-purple-light);
+  border: .125rem solid var(--color-purple-light);
+  box-shadow: 0rem .0625rem .3125rem 0rem var(--color-purple-light);
 }
 
 .login {
-  width: clamp(50px, 100%, 150px);
-  height: 50px;
+  width: clamp(3.125rem, 100%, 9.375rem);
+  height: 3.125rem;
   display: block;
 }
 
 .input_error {
   color: var(--color-error-red);
-  font-size: 14px;
+  font-size: .875rem;
   display: none;
 }
 
@@ -296,45 +340,56 @@ input[type="checkbox"] {
 }
 
 .password_input {
-  padding-right: 30px;
+  padding-right: 1.875rem;
 }
 
 .password_toggle_icon {
   cursor: pointer;
-  width: 28px;
+  width: 1.75rem;
   position: absolute;
-  right: 19px;
+  right: 1.1875rem;
   top: 40%;
   transform: translateY(-50%);
   z-index: 1;
 }
 
 .success-container {
-  width: clamp(150px, 90%, 400px);
+  width: clamp(9.375rem, 90%, 25rem);
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 50px 20px;
+  padding: 3.125rem 1.25rem;
   text-align: center;
-  animation: slide-in 0.5s ease-in-out;
-  border-radius: 20px;
+  -webkit-animation: slide-in 0.5s ease-in-out;
+          animation: slide-in 0.5s ease-in-out;
+  border-radius: 1.25rem;
   background-color: var(--color-gunmetal);
-  box-shadow: 2px 14px 300px #038abff0;
+  box-shadow: .125rem .875rem 18.75rem #038abff0;
   display: none;
   z-index: 20;
 }
 
 .success-content h2 {
   font-family: Arial, Helvetica, sans-serif;
-  letter-spacing: 4px;
+  letter-spacing: .25rem;
   color: #16FF00;
 }
 
 .success-content p {
   color: #FFED00;
-  font-size: 18px;
-  line-height: 50px;
+  font-size: 1.125rem;
+  line-height: 3.125rem;
+}
+
+@-webkit-keyframes slide-in {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
 }
 
 @keyframes slide-in {
@@ -349,12 +404,12 @@ input[type="checkbox"] {
 
 #continueButton {
   border: none;
-  min-width: 120px;
-  width: clamp(120px, 100%, 300px);
-  height: 50px;
+  min-width: 7.5rem;
+  width: clamp(7.5rem, 100%, 18.75rem);
+  height: 3.125rem;
   cursor: pointer;
-  margin-top: 20px;
-  border-radius: 4px;
+  margin-top: 1.25rem;
+  border-radius: .25rem;
   font-family: Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   color: #fff;
@@ -367,16 +422,16 @@ input[type="checkbox"] {
 
 
 .account_navIcon {
-  width: 30px;
+  width: 1.875rem;
 }
 
 .user {
-  margin-right: 100px;
+  margin-right: 6.25rem;
 }
 
 .navbar_icon {
   display: flex;
-  gap: 10px;
+  gap: .625rem;
 }
 
 /**------------------------------ Banner Section */
@@ -404,15 +459,15 @@ input[type="checkbox"] {
 }
 
 #customVideo {
-  width: clamp(150px, 100%, 513px);
+  width: clamp(9.375rem, 100%, 32.0625rem);
   pointer-events: none;
-  border-radius: 34px 632px 139px 688px;
-  margin-top: -12px;
+  border-radius: 2.125rem 39.5rem 8.6875rem 43rem;
+  margin-top: -0.75rem;
   transform: rotate(260deg);
 }
 
 .banner_content {
-  width: clamp(100px, 100%, 635px);
+  width: clamp(6.25rem, 100%, 39.6875rem);
   text-align: center;
   z-index: 1;
 }
@@ -425,9 +480,9 @@ input[type="checkbox"] {
 
 
 .welcome {
-  font-size: 50px;
-  word-spacing: 5px;
-  letter-spacing: 5px;
+  font-size: 3.125rem;
+  word-spacing: .3125rem;
+  letter-spacing: .3125rem;
   background-image: linear-gradient(to right, #fbff00, #ff9100);
   -webkit-background-clip: text;
   background-clip: text;
@@ -435,39 +490,48 @@ input[type="checkbox"] {
 }
 
 .share {
-  line-height: 70px;
+  line-height: 4.375rem;
 }
 
 .about_text {
-  line-height: 30px;
-  margin: 35px;
-  padding-bottom: 15px;
+  line-height: 1.875rem;
+  margin: 2.1875rem;
+  padding-bottom: .9375rem;
   text-align: start;
-  border-bottom: 2px solid rgb(194, 253, 194);
+  border-bottom: .125rem solid rgb(194, 253, 194);
 }
 
 .more_btn {
-  width: clamp(20px, 100%, 350px);
-  height: 50px;
-  font-size: 17px;
+  width: clamp(1.25rem, 100%, 21.875rem);
+  height: 3.125rem;
+  font-size: 1.0625rem;
 }
 
 .arrow_container {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin-bottom: 64px; */
-
 }
 
 .arrow {
-  width: 50px;
+  width: 3.125rem;
   border-radius: 50%;
-  animation: slideUpDown .6s infinite alternate;
+  -webkit-animation: slideUpDown .6s infinite alternate;
+          animation: slideUpDown .6s infinite alternate;
 }
 
 .arrow:hover {
-  box-shadow: 12px 21px 118px 10px var(--color-blue-hover);
+  box-shadow: .75rem 1.3125rem 7.375rem .625rem var(--color-blue-hover);
+}
+
+@-webkit-keyframes slideUpDown {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(.625rem);
+  }
 }
 
 @keyframes slideUpDown {
@@ -476,13 +540,13 @@ input[type="checkbox"] {
   }
 
   100% {
-    transform: translateY(10px);
+    transform: translateY(.625rem);
   }
 }
 
 /** Roadmap Section */
 .about_section {
-  margin-top: 65px;
+  margin-top: 4.0625rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -490,7 +554,7 @@ input[type="checkbox"] {
 }
 
 .roadmap {
-  width: clamp(200px, 100%, 1064px);
+  width: clamp(12.5rem, 100%, 66.5rem);
   text-align: center;
   overflow: hidden;
 }
@@ -498,106 +562,106 @@ input[type="checkbox"] {
 .service {
   display: flex;
   justify-content: space-between;
-  margin: 30px 0;
+  margin: 1.875rem 0;
 }
 
 .title {
-  line-height: 54px;
+  line-height: 3.375rem;
 }
 
 .service_name {
-  margin: 10px 0;
+  margin: .625rem 0;
   color: #FFD600;
 }
 
 .service_list {
-  line-height: 23px;
+  line-height: 1.4375rem;
   text-align: start;
 }
 
 .creatorInfo {
-  border-radius: 24px;
-  border: 3px solid #FFD12F;
+  border-radius: 1.5rem;
+  border: .1875rem solid #FFD12F;
   background: #ffffff05;
-  margin-top: 50px;
+  margin-top: 3.125rem;
 }
 
 .country {
-  width: clamp(200px, 100%, 701px);
-  min-height: 196px;
-  margin: 20px auto;
+  width: clamp(12.5rem, 100%, 43.8125rem);
+  min-height: 12.25rem;
+  margin: 1.25rem auto;
 }
 
 .countryBox {
-  border-radius: 12px;
+  border-radius: .75rem;
   background: rgba(255, 255, 255, 0.10);
   display: inline-flex;
-  padding: 8px 20px 8px 8px;
+  padding: .5rem 1.25rem .5rem .5rem;
   align-items: center;
-  gap: 16px;
-  margin: 19px 5px -1px;
+  gap: 1rem;
+  margin: 1.1875rem .3125rem -0.0625rem;
 }
 
 .card {
-  width: clamp(200px, 100%, 904px);
+  width: clamp(12.5rem, 100%, 56.5rem);
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
-  margin: 20px auto;
-  gap: 40px;
+  margin: 1.25rem auto;
+  gap: 2.5rem;
 }
 
 .card_content {
-  width: clamp(200px, 100%, 432px);
-  min-height: 236px;
+  width: clamp(12.5rem, 100%, 27rem);
+  min-height: 14.75rem;
   color: #FFF;
   text-align: center;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 400;
-  line-height: 32px;
-  border-radius: 16px;
-  padding: 28px;
+  line-height: 2rem;
+  border-radius: 1rem;
+  padding: 1.75rem;
   background: #ffffff1a;
 }
 
 .uparrow {
-  width: 40px;
+  width: 2.5rem;
   position: fixed;
-  right: 20px;
-  bottom: 10px;
+  right: 1.25rem;
+  bottom: .625rem;
   z-index: 111;
 }
 
 .destinations {
-  width: clamp(200px, 100%, 1102px);
+  width: clamp(12.5rem, 100%, 68.875rem);
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-  margin: 30px auto;
+  margin: 1.875rem auto;
 }
 
 .rev {
   display: block;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .cityCard {
-  width: clamp(100px, 100%, 358px);
+  width: clamp(6.25rem, 100%, 22.375rem);
   position: relative;
   display: flex;
   align-items: center;
   text-align: center;
-  margin: 10px;
+  margin: .625rem;
 }
 
 .cityImg {
   width: 100%;
-  height: 503px;
-  border-radius: 24px;
+  height: 31.4375rem;
+  border-radius: 1.5rem;
 }
 
 .cityInfo {
@@ -606,24 +670,24 @@ input[type="checkbox"] {
   bottom: 0;
   left: 0;
   background-color: #1B2A40;
-  padding: 10px;
-  border-radius: 8px;
+  padding: .625rem;
+  border-radius: .5rem;
 }
 
 .cityName {
-  font-size: 18px;
+  font-size: 1.125rem;
   color: yellow;
-  margin-bottom: 5px;
+  margin-bottom: .3125rem;
 }
 
 .cityPrice {
-  font-size: 18px;
-  line-height: 37px;
+  font-size: 1.125rem;
+  line-height: 2.3125rem;
   color: #007bff;
 }
 
 .cityDuration {
-  font-size: 16px;
+  font-size: 1rem;
   color: #fff9f9f3;
 }
 
@@ -640,51 +704,53 @@ Reviews SEction */ .reviews_section {
 
 .reviews {
   width: 90%;
-  min-height: 597px;
+  min-height: 37.3125rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  gap: 37px;
+  gap: 2.3125rem;
 }
 
 .reviews_heading,
-.weather_heading {
+.weather_heading,
+.journal {
   color: #ffd600;
   text-align: center;
-  line-height: 70px;
-  font-size: 40px;
-  letter-spacing: 3px;
+  line-height: 4.375rem;
+  font-size: 2.5rem;
+  letter-spacing: .1875rem;
 }
 
 .card_views {
-  width: clamp(150px, 100%, 444px);
-  height: 260px;
-  padding: 29px;
-  border-radius: 20px;
-  border: 1px solid #ffffff;
+  width: clamp(9.375rem, 100%, 27.75rem);
+  height: 16.25rem;
+  padding: 1.8125rem;
+  border-radius: 1.25rem;
+  border: .0625rem solid #ffffff;
   background: #121E28;
-  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(.125rem);
+          backdrop-filter: blur(.125rem);
   overflow: hidden;
 }
 
 .card_views:hover {
-  box-shadow: 4px 4px 18px 2px #ffd600;
-  transform: translateY(-5px);
+  box-shadow: .25rem .25rem 1.125rem .125rem #ffd600;
+  transform: translateY(-0.3125rem);
   transition: transform 0.3s ease;
 }
 
 .userInfo {
   display: flex;
-  gap: 15px;
+  gap: .9375rem;
   align-items: center;
 }
 
 .userImg {
-  width: 46px;
-  height: 46px;
-  border-radius: 100px;
+  width: 2.875rem;
+  height: 2.875rem;
+  border-radius: 6.25rem;
 }
 
 .userName {
@@ -693,7 +759,7 @@ Reviews SEction */ .reviews_section {
 
 .userMail {
   font-style: italic;
-  font-size: 14px;
+  font-size: .875rem;
   font-weight: lighter;
 }
 
@@ -702,8 +768,8 @@ Reviews SEction */ .reviews_section {
 }
 
 .commentary {
-  line-height: 22px;
-  margin: 20px 0;
+  line-height: 1.375rem;
+  margin: 1.25rem 0;
   text-align: center;
 }
 
@@ -724,9 +790,9 @@ Reviews SEction */ .reviews_section {
 
 .slideIcon {
   cursor: pointer;
-  width: 30px;
-  height: 30px;
-  margin: 0 10px;
+  width: 1.875rem;
+  height: 1.875rem;
+  margin: 0 .625rem;
 }
 
 .card_views {
@@ -744,26 +810,26 @@ Reviews SEction */ .reviews_section {
 #minTemp,
 #maxTemp {
   color: rgb(0, 0, 0);
-  width: 100px;
-  height: 30px;
+  width: 6.25rem;
+  height: 1.875rem;
 }
 
 .destination-item {
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  margin-bottom: .625rem;
+  padding: .625rem;
+  border: .0625rem solid #ccc;
+  border-radius: .3125rem;
 }
 
 #getWeatherButton {
-  width: 100px;
-  height: 30px;
+  width: 6.25rem;
+  height: 1.875rem;
   background-color: cadetblue;
 }
 
 .searchImg,
 .searchbtn {
-  width: 20px;
+  width: 1.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -771,44 +837,44 @@ Reviews SEction */ .reviews_section {
 }
 
 .searchbtn {
-  width: 80px;
-  height: 80px;
+  width: 5rem;
+  height: 5rem;
   cursor: pointer;
   background-color: transparent;
 }
 
 .cardCity {
-  width: clamp(300px, 90%, 570px);
-  border-radius: 44px;
+  width: clamp(18.75rem, 90%, 35.625rem);
+  border-radius: 2.75rem;
   background: radial-gradient(73.19% 111.55% at 93.07% 74.31%, #45278B 0%, #2E335A 100%);
-  box-shadow: 0px 1px 0px 0px #FFF inset, 0px 20px 100px 0px rgba(74, 57, 127, 0.70);
+  box-shadow: 0rem .0625rem 0rem 0rem #FFF inset, 0rem 1.25rem 6.25rem 0rem rgba(74, 57, 127, 0.70);
   color: #fff;
-  margin: 40px auto 0;
-  border-radius: 20px;
-  padding: 16px 58px;
+  margin: 2.5rem auto 0;
+  border-radius: 1.25rem;
+  padding: 1rem 3.625rem;
   text-align: center;
 }
 
 .search {
   width: 100%;
   display: flex;
-  gap: 20px;
+  gap: 1.25rem;
   align-items: center;
   justify-content: space-between;
 }
 
 .search_input {
-  width: clamp(200px, 100%, 500px);
+  width: clamp(12.5rem, 100%, 31.25rem);
 
 }
 
 .weather_icon {
-  width: 170px;
-  margin-top: 30px;
+  width: 10.625rem;
+  margin-top: 1.875rem;
 }
 
 .temp {
-  font-size: 80px;
+  font-size: 5rem;
   font-family: Manrope;
   background: var(--cool-gray-gradient-light, linear-gradient(180deg, #F9FAFB 0%, rgba(249, 250, 251, 0.00) 100%));
   background-clip: text;
@@ -817,20 +883,20 @@ Reviews SEction */ .reviews_section {
 }
 
 .city {
-  font-size: 45px;
-  margin-top: 20px;
+  font-size: 2.8125rem;
+  margin-top: 1.25rem;
 }
 
 .details {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
-  margin-top: 50px;
+  padding: 0 1.25rem;
+  margin-top: 3.125rem;
 }
 
 .weather img {
-  width: 40px;
+  width: 2.5rem;
 }
 
 .col {
@@ -841,64 +907,64 @@ Reviews SEction */ .reviews_section {
 
 .humidity,
 .wind {
-  font-size: 28px;
-  margin: 20px 20px 10px;
+  font-size: 1.75rem;
+  margin: 1.25rem 1.25rem .625rem;
 }
 
 .nameTemp {
-  margin: 20px 20px 10px;
+  margin: 1.25rem 1.25rem .625rem;
 }
 
 .errorCityName {
   text-align: start;
-  line-height: 40px;
+  line-height: 2.5rem;
   color: var(--color-error-red);
   display: none;
 }
 
 .weather-icon img {
-  width: 100px;
+  width: 6.25rem;
 }
 
 .searchImg {
-  width: 54px;
-  margin-bottom: 17px;
+  width: 3.375rem;
+  margin-bottom: 1.0625rem;
 }
 
 
 .searchImg:hover {
-  box-shadow: 2px 3px 50px 5px #95c0f4d9;
+  box-shadow: .125rem .1875rem 3.125rem .3125rem #95c0f4d9;
 }
 
 
 .conatiner_weather {
-  margin: 50px 0;
+  margin: 3.125rem 0;
 }
 
 .plansText {
   width: 60%;
-  line-height: 30px;
-  margin: 20px auto;
+  line-height: 1.875rem;
+  margin: 1.25rem auto;
 }
 
 
 #citySelect {
-  padding: 9px 4px;
-  font-size: 20px;
-  border-radius: 4px;
+  padding: .5625rem .25rem;
+  font-size: 1.25rem;
+  border-radius: .25rem;
   text-align: center;
-  margin: 10px 0;
+  margin: .625rem 0;
   background-color: cornflowerblue;
 }
 
 .selectText {
-  line-height: 30px;
+  line-height: 1.875rem;
   color: yellow;
-  margin: 20px 0;
+  margin: 1.25rem 0;
 }
 
 .footer {
-  height: 90px;
+  height: 5.625rem;
   background-image: linear-gradient(180deg, #ffd500f5, #ffc800a9);
   display: flex;
   justify-content: space-around;
@@ -911,12 +977,12 @@ Reviews SEction */ .reviews_section {
 .listFooter,
 .iconFooter {
   display: flex;
-  gap: 20px;
+  gap: 1.25rem;
 
 }
 
 .listFooter li {
-  font-size: 22px;
+  font-size: 1.375rem;
   font-family: monospace;
   color: var(--color-blue-hover);
 }
@@ -926,11 +992,129 @@ Reviews SEction */ .reviews_section {
 }
 
 .iconFooterLogo {
-  width: 50px;
+  width: 3.125rem;
 }
 
-/**--------------------------- Media Query 1440px */
-@media only screen and (max-width: 1440px) {
+/* Post page style */
+.post_section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  ;
+  box-shadow: 0rem 0rem .625rem rgba(0, 0, 0, 0.979);
+  padding: 1.25rem;
+  border-radius: .5rem;
+  text-align: center;
+  position: relative;
+  margin: 6.25rem;
+  ;
+}
+
+#postForm {
+  width: clamp(12.5rem, 100%, 37.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.labelPost {
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+
+}
+
+textarea {
+  width: 100%;
+  height: 3.125rem;
+  padding: .625rem;
+  margin-bottom: 1rem;
+  border: .0625rem solid #ccc;
+  border-radius: .25rem;
+  background-color: transparent;
+  resize: none;
+  height: 7.5rem;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.postSent {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: .625rem 1.25rem;
+  border-radius: .25rem;
+  font-size: 1.125rem;
+  cursor: pointer;
+}
+
+.postSent:hover {
+  background-color: #0056b3;
+}
+
+.post-container {
+  width: clamp(18.75rem, 100%, 43.75rem);
+  background-color: #fff;
+  box-shadow: 0rem .3125rem .9375rem rgba(0, 0, 0, 0.2);
+  border-radius: .5rem;
+  padding: 1.25rem;
+  text-align: left;
+  transition: transform 0.2s ease-in-out;
+  display: none;
+  margin-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 1.25rem;
+  display: none;
+}
+
+.post-container h2,
+.post-container p,
+strong {
+  font-size: 1.125rem;
+  line-height: 1.375rem;
+  color: black;
+}
+
+textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
+  font-size: .9375rem;
+  color: bisque;
+}
+
+textarea::-moz-placeholder, input::-moz-placeholder {
+  font-size: .9375rem;
+  color: bisque;
+}
+
+textarea:-ms-input-placeholder, input:-ms-input-placeholder {
+  font-size: .9375rem;
+  color: bisque;
+}
+
+textarea::-ms-input-placeholder, input::-ms-input-placeholder {
+  font-size: .9375rem;
+  color: bisque;
+}
+
+textarea::placeholder,
+input::placeholder {
+  font-size: .9375rem;
+  color: bisque;
+}
+
+.post-container h2 {
+  font-size: 1.5625rem;
+  color: darkorange;
+  font-family: monospace, sans-serif;
+}
+
+.post-container:hover {
+  transform: scale(1.02);
+}
+
+/**--------------------------- Media Query 90rem */
+@media only screen and (max-width: 90rem) {
   .banner_section {
     width: 100%;
   }
@@ -942,35 +1126,35 @@ Reviews SEction */ .reviews_section {
 }
 
 
-/**--------------------------- Media Query 1300px */
-@media only screen and (max-width: 1300px) {
+/**--------------------------- Media Query 81.25rem */
+@media only screen and (max-width: 81.25rem) {
 
   /** registration page */
   #registration_container {
     flex-wrap: wrap;
-    padding: 17px 30px;
+    padding: 1.0625rem 1.875rem;
     gap: 10%;
   }
 
   .sign_text {
-    font-size: 25px;
+    font-size: 1.5625rem;
   }
 
   .greetings_card {
-    width: clamp(500px, 100%, 592px);
-    min-height: 150px;
+    width: clamp(31.25rem, 100%, 37rem);
+    min-height: 9.375rem;
     box-shadow: none;
   }
 
   .signMessage {
-    font-size: 16px;
+    font-size: 1rem;
   }
 
   /** banner Section */
   .banner_section {
     flex-direction: column;
     align-items: center;
-    min-height: 860px;
+    min-height: 53.75rem;
   }
 
   .banner_content {
@@ -980,21 +1164,21 @@ Reviews SEction */ .reviews_section {
   }
 
   #customVideo {
-    width: 900px;
+    width: 56.25rem;
     height: auto;
     z-index: 1;
-    border-radius: 8px;
-    margin-top: -12px;
+    border-radius: .5rem;
+    margin-top: -0.75rem;
     transform: rotate(270deg);
   }
 
   .contain {
-    max-height: 1291px;
-    margin-top: -311px;
+    max-height: 80.6875rem;
+    margin-top: -19.4375rem;
   }
 
   .arrow {
-    margin-top: -300px;
+    margin-top: -18.75rem;
   }
 
   .hidearrow {
@@ -1002,14 +1186,14 @@ Reviews SEction */ .reviews_section {
   }
 
   .topArrow {
-    margin-top: 53px;
+    margin-top: 3.3125rem;
   }
 
   .service {
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
-    gap: 30px;
+    gap: 1.875rem;
   }
 
   .card {
@@ -1023,27 +1207,27 @@ Reviews SEction */ .reviews_section {
   }
 
   .card_content {
-    width: clamp(200px, 90%, 721px);
+    width: clamp(12.5rem, 90%, 45.0625rem);
   }
 
   .slideIcon {
-    width: 30px;
+    width: 1.875rem;
     display: inline-block;
   }
 
   .reviews {
-    min-height: 328px;
+    min-height: 20.5rem;
   }
 
   .navigator {
     width: 100%;
-    height: 70px;
+    height: 4.375rem;
     text-align: center;
   }
 }
 
-/** media 1024px */
-@media only screen and (max-width:1024px) {
+/** media 64rem */
+@media only screen and (max-width:64rem) {
   .contentCityInfo {
     flex-direction: column;
     justify-content: center;
@@ -1056,12 +1240,12 @@ Reviews SEction */ .reviews_section {
   }
 
   .card_views {
-    width: clamp(200px, 100%, 698px);
+    width: clamp(12.5rem, 100%, 43.625rem);
   }
 }
 
 
-/** Media Query 820px */
+/** Media Query 51.25rem */
 @media only screen and (max-width: 51.25rem) {
 
   .register_btn,
@@ -1110,14 +1294,14 @@ Reviews SEction */ .reviews_section {
 
   /**  Registracion Page */
   */ .name-input {
-    margin-bottom: 0px;
+    margin-bottom: 0rem;
   }
 
   .success-content p,
   .success-content h2 {
-    font-size: 12px;
-    line-height: 40px;
-    letter-spacing: 2px;
+    font-size: .75rem;
+    line-height: 2.5rem;
+    letter-spacing: .125rem;
   }
 
   .slider {
@@ -1126,7 +1310,7 @@ Reviews SEction */ .reviews_section {
   }
 
   #citySelect {
-    margin-left: -50px;
+    margin-left: -3.125rem;
   }
 
 }
@@ -1136,9 +1320,9 @@ Reviews SEction */ .reviews_section {
   transform: translateY(0);
 }
 
-@media only screen and (max-width: 475px) {
+@media only screen and (max-width: 29.6875rem) {
   .commentary {
-    font-size: 12px;
+    font-size: .75rem;
   }
 
   .userInfo {
@@ -1150,7 +1334,7 @@ Reviews SEction */ .reviews_section {
   }
 
   .cardCity {
-    padding: 12px 0px;
+    padding: .75rem 0rem;
     background: none;
     box-shadow: none;
   }
@@ -1161,95 +1345,105 @@ Reviews SEction */ .reviews_section {
   }
 
   .search_input {
-    width: 250px;
+    width: 15.625rem;
   }
 
   .humidity .wind {
-    font-size: 18px;
+    font-size: 1.125rem;
   }
 
   .footer {
     flex-direction: column;
-    padding: 80px 0;
+    padding: 5rem 0;
   }
 
   .listFooter {
-    margin: 20px 0;
+    margin: 1.25rem 0;
+  }
+
+  .user {
+    margin-right: 0rem;
+  }
+
+  .post_section {
+    margin: 6.25rem 0;
+  }
+
+  .post-container {
+    width: 100%;
+  }
+}
+
+
+@media only screen and (max-width: 26.5625rem) {
+  .welcome {
+    font-size: 1.25rem;
+  }
+
+  .about_text {
+    font-size: .9375rem;
+    line-height: 1.625rem;
+  }
+
+  .col {
+    flex-wrap: wrap;
+  }
+}
+
+
+@media only screen and (max-width: 22.5rem) {
+
+  /* * registration Page */
+  #registration_container {
+    padding: .6875rem;
+  }
+
+  .sign_text {
+    font-size: .8125rem;
+    line-height: 2.5rem;
+  }
+
+  .signMessage,
+  .cancel {
+    font-size: .75rem;
+    line-height: 1.25rem;
+  }
+
+  .register_nameItem h3 {
+    font-size: 1rem;
+  }
+
+  .logo_header {
+    display: none;
+  }
+
+  .input_error {
+    font-size: .75rem;
+  }
+
+  .share,
+  .welcome {
+    font-size: .9375rem;
+    line-height: 1.5rem;
+  }
+
+  /**banner section  */
+  .about_text {
+    width: 90%;
+    margin: 2.1875rem 0;
+    font-size: .75rem;
+  }
+
+  .more_btn {
+    font-size: .8125rem;
+  }
+
+  .topArrow {
+    margin-top: 2.0625rem;
   }
 
 
-  @media only screen and (max-width: 425px) {
-    .welcome {
-      font-size: 20px;
-    }
-
-    .about_text {
-      font-size: 15px;
-      line-height: 26px;
-    }
-
-    .col {
-      flex-wrap: wrap;
-    }
+  .reviews_heading {
+    font-size: 1.25rem;
   }
-
-
-  @media only screen and (max-width: 360px) {
-
-    /* * registration Page */
-    #registration_container {
-      padding: 11px;
-    }
-
-    .sign_text {
-      font-size: 13px;
-      line-height: 40px;
-    }
-
-    .signMessage,
-    .cancel {
-      font-size: 12px;
-      line-height: 20px;
-    }
-
-    .register_nameItem h3 {
-      font-size: 16px;
-    }
-
-    .logo_header {
-      display: none;
-    }
-
-    .input_error {
-      font-size: 12px;
-    }
-
-    .share,
-    .welcome {
-      font-size: 15px;
-      line-height: 24px;
-    }
-
-    /**banner section  */
-    .about_text {
-      width: 90%;
-      margin: 35px 0;
-      font-size: 12px;
-    }
-
-    .more_btn {
-      font-size: 13px;
-    }
-
-    .topArrow {
-      margin-top: 33px;
-    }
-
-    .banner_content {
-      margin-top: -328px;
-    }
-
-    .reviews_heading {
-      font-size: 20px;
-    }
-  }
+}
