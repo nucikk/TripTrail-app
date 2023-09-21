@@ -24,7 +24,7 @@ body {
   font-weight: 700;
   background-image: linear-gradient(0deg,
       #3a3b45 0%,
-      #304658 50%,
+      #5d809d 50%,
       #0a1117 100%);
 }
 
@@ -630,8 +630,9 @@ input[type="checkbox"] {
 .contentCityInfo {
   display: flex;
 }
-/** */ Reviews SEction */
-.reviews_section {
+
+/** */
+Reviews SEction */ .reviews_section {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -639,16 +640,17 @@ input[type="checkbox"] {
 
 .reviews {
   width: 90%;
-    min-height: 597px;   
-     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    gap: 37px;
+  min-height: 597px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  gap: 37px;
 }
 
-.reviews_heading , .weather_heading {
+.reviews_heading,
+.weather_heading {
   color: #ffd600;
   text-align: center;
   line-height: 70px;
@@ -666,10 +668,11 @@ input[type="checkbox"] {
   backdrop-filter: blur(2px);
   overflow: hidden;
 }
+
 .card_views:hover {
   box-shadow: 4px 4px 18px 2px #ffd600;
-  transform: translateY(-5px); 
-  transition: transform 0.3s ease; 
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
 }
 
 .userInfo {
@@ -687,23 +690,28 @@ input[type="checkbox"] {
 .userName {
   font-weight: 800;
 }
+
 .userMail {
   font-style: italic;
   font-size: 14px;
   font-weight: lighter;
 }
-.userMail p{
-    color: #cfe6fab0;
+
+.userMail p {
+  color: #cfe6fab0;
 }
+
 .commentary {
   line-height: 22px;
   margin: 20px 0;
   text-align: center;
 }
+
 .stars {
-   width: 100%;
-   text-align: center;
+  width: 100%;
+  text-align: center;
 }
+
 .slideIcon {
   display: none;
 }
@@ -724,11 +732,13 @@ input[type="checkbox"] {
 .card_views {
   display: none;
 }
+
 /** weather section */
 .weather_section {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 #minTemp,
@@ -856,11 +866,6 @@ input[type="checkbox"] {
 }
 
 
-.weather_section {
-  text-align: center;
-}
-
-
 .searchImg:hover {
   box-shadow: 2px 3px 50px 5px #95c0f4d9;
 }
@@ -890,6 +895,38 @@ input[type="checkbox"] {
   line-height: 30px;
   color: yellow;
   margin: 20px 0;
+}
+
+.footer {
+  height: 90px;
+  background-image: linear-gradient(180deg, #ffd500f5, #ffc800a9);
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  align-items: center;
+  align-content: space-between;
+
+}
+
+.listFooter,
+.iconFooter {
+  display: flex;
+  gap: 20px;
+
+}
+
+.listFooter li {
+  font-size: 22px;
+  font-family: monospace;
+  color: var(--color-blue-hover);
+}
+
+.listFooter li:hover {
+  color: #2E335A;
+}
+
+.iconFooterLogo {
+  width: 50px;
 }
 
 /**--------------------------- Media Query 1440px */
@@ -997,6 +1034,7 @@ input[type="checkbox"] {
   .reviews {
     min-height: 328px;
   }
+
   .navigator {
     width: 100%;
     height: 70px;
@@ -1016,6 +1054,7 @@ input[type="checkbox"] {
   .cityCard {
     width: 100%;
   }
+
   .card_views {
     width: clamp(200px, 100%, 698px);
   }
@@ -1089,7 +1128,6 @@ input[type="checkbox"] {
   #citySelect {
     margin-left: -50px;
   }
-  
 
 }
 
@@ -1100,102 +1138,118 @@ input[type="checkbox"] {
 
 @media only screen and (max-width: 475px) {
   .commentary {
-   font-size: 12px;
+    font-size: 12px;
   }
+
   .userInfo {
     flex-wrap: wrap;
   }
+
   .card_views {
     height: auto;
   }
+
   .cardCity {
     padding: 12px 0px;
     background: none;
     box-shadow: none;
   }
+
   .search {
     flex-direction: column;
     justify-content: center;
-}
-.search_input {
-  width: 250px;
-}
-.humidity .wind {
-  font-size: 18px;
-}
-}
-
-
-@media only screen and (max-width: 425px) {
-  .welcome {
-    font-size: 20px;
   }
 
-  .about_text {
-    font-size: 15px;
-    line-height: 26px;
-  }
-  .col {
-    flex-wrap: wrap;
-  }
-}
-
-
-@media only screen and (max-width: 360px) {
-  /* * registration Page */
-  #registration_container {
-    padding: 11px;
+  .search_input {
+    width: 250px;
   }
 
-  .sign_text {
-    font-size: 13px;
-    line-height: 40px;
+  .humidity .wind {
+    font-size: 18px;
   }
 
-  .signMessage,
-  .cancel {
-    font-size: 12px;
-    line-height: 20px;
+  .footer {
+    flex-direction: column;
+    padding: 80px 0;
   }
 
-  .register_nameItem h3 {
-    font-size: 16px;
+  .listFooter {
+    margin: 20px 0;
   }
 
-  .logo_header {
-    display: none;
+
+  @media only screen and (max-width: 425px) {
+    .welcome {
+      font-size: 20px;
+    }
+
+    .about_text {
+      font-size: 15px;
+      line-height: 26px;
+    }
+
+    .col {
+      flex-wrap: wrap;
+    }
   }
 
-  .input_error {
-    font-size: 12px;
-  }
 
-  .share,
-  .welcome {
-    font-size: 15px;
-    line-height: 24px;
-  }
+  @media only screen and (max-width: 360px) {
 
-  /**banner section  */
-  .about_text {
-    width: 90%;
-    margin: 35px 0;
-    font-size: 12px;
-  }
+    /* * registration Page */
+    #registration_container {
+      padding: 11px;
+    }
 
-  .more_btn {
-    font-size: 13px;
-  }
+    .sign_text {
+      font-size: 13px;
+      line-height: 40px;
+    }
 
-  .topArrow {
-    margin-top: 33px;
-  }
+    .signMessage,
+    .cancel {
+      font-size: 12px;
+      line-height: 20px;
+    }
 
-  .banner_content {
-    margin-top: -328px;
-  }
+    .register_nameItem h3 {
+      font-size: 16px;
+    }
 
-  .reviews_heading {
-    font-size: 20px;
+    .logo_header {
+      display: none;
+    }
+
+    .input_error {
+      font-size: 12px;
+    }
+
+    .share,
+    .welcome {
+      font-size: 15px;
+      line-height: 24px;
+    }
+
+    /**banner section  */
+    .about_text {
+      width: 90%;
+      margin: 35px 0;
+      font-size: 12px;
+    }
+
+    .more_btn {
+      font-size: 13px;
+    }
+
+    .topArrow {
+      margin-top: 33px;
+    }
+
+    .banner_content {
+      margin-top: -328px;
+    }
+
+    .reviews_heading {
+      font-size: 20px;
+    }
   }
-}
