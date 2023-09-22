@@ -192,6 +192,8 @@ header {
   align-self: auto;
   gap: 20%;
   color: var(--color-purple-light);
+  position: relative;
+    margin: 92px 0;
 }
 
 .greetings_card {
