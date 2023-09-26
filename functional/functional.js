@@ -1,7 +1,8 @@
 "use strict"
 
 //! --- ► ფუნქციონალი: navbar-ის ფონის ფერი შეიცვლება როცა მომხამრებელი ჩამოსქროლავს 
-const navbar = document.querySelector('.navbar');
+
+ const navbar = document.querySelector('.navbar');
 const scrollBar = 100;
 
 window.addEventListener('scroll', (e) => {
@@ -12,7 +13,6 @@ window.addEventListener('scroll', (e) => {
     navbar.style.backgroundColor = 'transparent';
   }
 });
-
 
 //! --- ► 1.სანავიგაციო მენიუ, რომელიც აჩვენებს ბურგერის აიქონს პატარა ეკრანებზე და სრულ მენიუს დიდ ეკრანებზე
 //! --- ► 2.დინამიურად ამატებს მენიუს Sign Up & Login ბმულებს, როდესაც ეკრანის სიგანე 820px ქვემოთაა ამატებს, თუ 820ზე მეტია აშორებს მათ 
@@ -207,7 +207,7 @@ function scrollToTop() {
 
 
 
-// //* /* ფუნქცია API-დან მომხმარებლის მონაცემების წამოსაღებად
+//* ფუნქცია API-დან მომხმარებლის მონაცემების წამოსაღებად
 async function fetchUserData() {
   try {
     const response = await fetch('https://reqres.in/api/users?page=1');
@@ -224,7 +224,6 @@ async function fetchUserData() {
     throw new Error('Error fetching user data:', error);
   }
 }
-
 
 
 function createUserReview(user, comment, backgroundColor) {

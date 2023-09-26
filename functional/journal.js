@@ -117,5 +117,3 @@ function recordPost() {
   
     container.style.display = "block";
   }
-  
-  

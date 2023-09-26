@@ -12,7 +12,6 @@ window.addEventListener('scroll', (e) => {
   }
 });
 
-
 //! --- ► 1.სანავიგაციო მენიუ, რომელიც აჩვენებს ბურგერის აიქონს პატარა ეკრანებზე და სრულ მენიუს დიდ ეკრანებზე
 //! --- ► 2.დინამიურად ამატებს მენიუს Sign Up & Login ბმულებს, როდესაც ეკრანის სიგანე 820px ქვემოთაა ამატებს, თუ 820ზე მეტია აშორებს მათ 
 //! --- ► 3.toggle the menu visibility- burger აიქონზე დაჭერით გამოჩდეს მენიუ & close აიქონზე დაიხუროს
@@ -238,4 +237,3 @@ phoneInput.addEventListener('input', (event) => {
       togglePasswordIcon.src = '../image/hide.png';
     }
   };
-  
